@@ -2,7 +2,7 @@ package ss2_array_loop.exercise;
 
 import java.util.Scanner;
 
-public class Print {
+public class PrintShapes {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
