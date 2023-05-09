@@ -21,6 +21,5 @@ public class AddElement {
                 System.out.print(arrayInt[i] + "; ");
             }
         }
-
     }
 }
