@@ -72,10 +72,10 @@ public class PrintShapes {
                 case 6:
                     System.out.println("6. Print isosceles triangle");
                     for (int i = 0; i < 10; i++) {
-                        for (int j = 0; j < 10-i; j++) {
+                        for (int j = 0; j < 10 - i; j++) {
                             System.out.print("  ");
                         }
-                        for (int j = 0; j < 2*i+1; j++) {
+                        for (int j = 0; j < 2 * i + 1; j++) {
                             System.out.print("* ");
                         }
                         System.out.println("");
