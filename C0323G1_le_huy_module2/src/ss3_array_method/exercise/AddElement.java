@@ -10,12 +10,17 @@ public class AddElement {
         int index = Integer.parseInt(scanner.nextLine());
         System.out.println("Input a Element: ");
         int element = Integer.parseInt(scanner.nextLine());
-        for (int i = arrayInt.length - 1; i >= index; i--) {
-            arrayInt[i] = arrayInt[i - 1];
+        if (index < 0 || index > arrayInt.length - 1) {
+            System.out.println("Invalid Index");
+        } else {
+            for (int i = arrayInt.length - 1; i >= index; i--) {
+                arrayInt[i] = arrayInt[i - 1];
+            }
+            arrayInt[index] = element;
+            for (int i = 0; i < arrayInt.length; i++) {
+                System.out.print(arrayInt[i] + "; ");
+            }
         }
-        arrayInt[index] = element;
-        for (int i = 0; i < arrayInt.length; i++) {
-            System.out.print(arrayInt[i] + "; ");
-        }
+
     }
 }
