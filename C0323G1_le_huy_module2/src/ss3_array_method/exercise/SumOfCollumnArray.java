@@ -2,7 +2,7 @@ package ss3_array_method.exercise;
 
 import java.util.Scanner;
 
-public class SumOfCollumArray {
+public class SumOfCollumnArray {
     public static void main(String[] args) {
         //Make a array
         Scanner scanner = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class SumOfCollumArray {
         System.out.println("Input a index of collumn you want to sum: ");
         int index = Integer.parseInt(scanner.nextLine());
 
-        //Result:
+        //Print a Result:
         System.out.println("Result: " + sumCol(arrDouble, index));
     }
 
