@@ -19,10 +19,8 @@ public class Print20PrimeNumbers {
             if (countCheck == 1) {
                 countPrimeNumber++;
                 System.out.print(primeNumber + ", ");
-                countCheck = 0;
-            } else {
-                countCheck = 0;
             }
+            countCheck = 0;
         }
     }
 }
