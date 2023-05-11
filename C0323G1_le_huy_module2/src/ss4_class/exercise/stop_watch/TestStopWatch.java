@@ -13,6 +13,7 @@ public class TestStopWatch {
         System.out.println("This time when you press start: " + watch.getStartTime());
         System.out.println("Press any key to stop");
         press = scanner.nextLine();
+        watch.stop();
         System.out.println("This time when you press stop: " + watch.getEndTime());
         System.out.println("The amout of time is: " + watch.getElapsedTime());
     }

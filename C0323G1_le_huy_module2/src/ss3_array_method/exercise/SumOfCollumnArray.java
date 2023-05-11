@@ -31,7 +31,7 @@ public class SumOfCollumnArray {
     public static double sumCol(double[][] arr, int index) {
         double sum = 0;
         for (int i = 0; i < arr.length; i++) {
-            sum += arr[index][i];
+            sum += arr[i][index];
         }
         return sum;
     }
