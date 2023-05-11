@@ -7,12 +7,16 @@ public class TestQuadraticEquation {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input a: ");
         double a = Double.parseDouble(scanner.nextLine());
+        while (a == 0) {
+            System.out.println("a must be not equal to 0");
+            System.out.println("Input a: ");
+            a = Double.parseDouble(scanner.nextLine());
+        }
         System.out.println("Input b: ");
         double b = Double.parseDouble(scanner.nextLine());
         System.out.println("Input c: ");
         double c = Double.parseDouble(scanner.nextLine());
         QuadraticEquation quadraticEquation = new QuadraticEquation(a, b, c);
-        System.out.println(quadraticEquation.getDiscriminant());
         if (quadraticEquation.getDiscriminant() > 0) {
             System.out.println("QuadraticEquation has two roots: " + quadraticEquation.getRoot1() + " ; " + quadraticEquation.getRoot2());
         } else if (quadraticEquation.getDiscriminant() == 0) {

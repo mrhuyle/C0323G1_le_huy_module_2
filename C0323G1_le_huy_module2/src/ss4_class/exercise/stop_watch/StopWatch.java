@@ -9,11 +9,11 @@ public class StopWatch {
     }
 
     public long getStartTime() {
-        return startTime;
+        return this.startTime;
     }
 
     public long getEndTime() {
-        return endTime;
+        return this.endTime;
     }
 
     public long start() {
@@ -25,6 +25,6 @@ public class StopWatch {
     }
 
     public long getElapsedTime() {
-        return getEndTime() - getStartTime();
+        return this.getEndTime() - this.getStartTime();
     }
 }

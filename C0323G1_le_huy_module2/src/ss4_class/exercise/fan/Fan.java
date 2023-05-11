@@ -30,7 +30,7 @@ public class Fan {
     }
 
     public boolean getOn() {
-        return on;
+        return this.on;
     }
 
     public boolean setOn() { //true or false
