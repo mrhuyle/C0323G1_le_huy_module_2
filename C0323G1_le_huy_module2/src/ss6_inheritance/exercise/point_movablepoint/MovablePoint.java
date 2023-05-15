@@ -1,6 +1,7 @@
 package ss6_inheritance.exercise.point_movablepoint;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MovablePoint extends Point {
     private float xSpeed = 0.0f;
@@ -55,16 +56,9 @@ public class MovablePoint extends Point {
                 + Arrays.toString(getSpeed());
     }
 
-    public String move() {
-        String beginPoint = Arrays.toString(getXY());
+    public MovablePoint move() {
         setX(getX() + getXSpeed());
         setY(getY() + getYSpeed());
-        String endPoint = Arrays.toString(getXY());
-        return "A begin point "
-                + beginPoint
-                + " , has speed "
-                + Arrays.toString(getSpeed())
-                + " , move to a end point "
-                + endPoint;
+        return this;
     }
 }

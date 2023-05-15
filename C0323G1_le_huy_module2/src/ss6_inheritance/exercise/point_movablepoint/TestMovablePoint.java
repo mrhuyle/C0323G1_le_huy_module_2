@@ -8,6 +8,7 @@ public class TestMovablePoint {
         System.out.println(movablePoint);
         movablePoint.setSpeed(4.123f,5.12f);
         System.out.println(movablePoint);
-        System.out.println(movablePoint.move());
+        movablePoint.move();
+        System.out.println(movablePoint);
     }
 }
