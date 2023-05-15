@@ -4,8 +4,8 @@ public class TestPoint3D {
     public static void main(String[] args) {
         Point3D point3D = new Point3D();
         point3D.setXYZ(4, 5, 6);
-        System.out.println(point3D.toString());
+        System.out.println(point3D);
         point3D = new Point3D(7, 8, 9);
-        System.out.println(point3D.toString());
+        System.out.println(point3D);
     }
 }

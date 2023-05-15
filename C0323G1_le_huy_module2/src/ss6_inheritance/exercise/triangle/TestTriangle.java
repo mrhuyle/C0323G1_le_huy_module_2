@@ -34,7 +34,7 @@ public class TestTriangle {
         }
         while ((side1 + side2) < side3 || (side1 + side3) < side2 || (side3 + side2) < side1);
 
-        //Creat the triangle with constructor method
+        //Creat the triangle with constructor method and print the result
         Triangle triangle = new Triangle(side1, side2, side3, color);
         System.out.println(triangle);
     }
