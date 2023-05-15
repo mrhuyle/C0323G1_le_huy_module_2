@@ -4,9 +4,9 @@ public class TestMovablePoint {
     public static void main(String[] args) {
         MovablePoint movablePoint = new MovablePoint();
         System.out.println(movablePoint);
-        movablePoint.setXY(2.55f,4.55f);
+        movablePoint.setXY(2.55f, 4.55f);
         System.out.println(movablePoint);
-        movablePoint.setSpeed(4.123f,5.12f);
+        movablePoint.setSpeed(4.123f, 5.12f);
         System.out.println(movablePoint);
         movablePoint.move();
         System.out.println(movablePoint);
