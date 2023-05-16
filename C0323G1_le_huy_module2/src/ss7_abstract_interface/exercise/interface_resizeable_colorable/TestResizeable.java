@@ -14,6 +14,7 @@ public class TestResizeable {
         System.out.println("Before resize method:");
         for (Shapes shape : shapes) {
             System.out.println(shape);
+            System.out.println(" , area = " + shape.getArea());
         }
         System.out.println("Input percent to change the dimensions of shapes " +
                 "% (from 1 to 100)");
