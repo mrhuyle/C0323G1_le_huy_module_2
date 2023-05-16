@@ -1,6 +1,6 @@
 package ss7_abstract_interface.exercise.interface_resizeable;
 
-public class Shapes implements Resizeable {
+public abstract class Shapes implements Resizeable {
     String color = "green";
     boolean filled = true;
 
@@ -40,7 +40,5 @@ public class Shapes implements Resizeable {
     public void resize(double percent) {
         System.out.println("Area of shape = ");;
     }
-    public double getArea(){
-        return 0;
-    }
+    public abstract double getArea();
 }

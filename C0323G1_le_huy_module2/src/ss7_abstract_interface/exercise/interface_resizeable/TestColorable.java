@@ -11,6 +11,7 @@ public class TestColorable {
         shapes[2] = square;
         for (Shapes shape : shapes) {
             if (shape instanceof Colorable) {
+                System.out.print(shape.getArea() + " , ");
                 ((Colorable) shape).howToColor();
             } else {
                 System.out.println(shape.getArea());
