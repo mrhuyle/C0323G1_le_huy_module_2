@@ -1,4 +1,4 @@
-package ss7_abstract_interface.exercise.interface_resizeable;
+package ss7_abstract_interface.exercise.interface_resizeable_colorable;
 
 public abstract class Shapes implements Resizeable {
     String color = "green";

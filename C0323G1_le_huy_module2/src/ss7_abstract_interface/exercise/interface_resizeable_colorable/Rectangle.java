@@ -1,4 +1,4 @@
-package ss7_abstract_interface.exercise.interface_resizeable;
+package ss7_abstract_interface.exercise.interface_resizeable_colorable;
 
 public class Rectangle extends Shapes implements Resizeable {
     private double width = 1.0;

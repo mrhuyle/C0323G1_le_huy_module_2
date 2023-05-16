@@ -1,6 +1,5 @@
-package ss7_abstract_interface.exercise.interface_resizeable;
+package ss7_abstract_interface.exercise.interface_resizeable_colorable;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class TestResizeable {

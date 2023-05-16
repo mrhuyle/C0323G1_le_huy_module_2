@@ -1,4 +1,4 @@
-package ss7_abstract_interface.exercise.interface_resizeable;
+package ss7_abstract_interface.exercise.interface_resizeable_colorable;
 
 public class Square extends Rectangle implements Resizeable,Colorable {
     public Square() {

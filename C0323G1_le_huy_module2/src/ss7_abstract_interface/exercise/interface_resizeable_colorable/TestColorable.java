@@ -1,4 +1,4 @@
-package ss7_abstract_interface.exercise.interface_resizeable;
+package ss7_abstract_interface.exercise.interface_resizeable_colorable;
 
 public class TestColorable {
     public static void main(String[] args) {
