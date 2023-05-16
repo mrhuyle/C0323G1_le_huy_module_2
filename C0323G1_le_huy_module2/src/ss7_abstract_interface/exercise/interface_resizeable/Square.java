@@ -1,6 +1,6 @@
-package ss6_inheritance.practice;
+package ss7_abstract_interface.exercise.interface_resizeable;
 
-public class Square extends Rectangle {
+public class Square extends Rectangle implements Resizeable,Colorable {
     public Square() {
 
     }
@@ -18,15 +18,25 @@ public class Square extends Rectangle {
     }
 
     public void setSide(double side) {
-        setWidth(side);
-        setLength(side);
+        this.setWidth(side);
+        this.setLength(side);
     }
-
     @Override
     public String toString() {
         return "A Square with side = "
                 + getSide()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public void resize(double percent) {
+        setSide(getSide() * (1 + (percent / 100)));
+        System.out.println("Area of square = " + getArea());
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides");
     }
 }

@@ -1,4 +1,4 @@
-package ss7_abstract_interface.practice.interface_comparable;
+package ss7_abstract_interface.practice.interface_comparable_comparator;
 
 class Circle {
     private double radius = 2.0;
