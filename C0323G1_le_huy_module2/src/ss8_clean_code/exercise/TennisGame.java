@@ -1,6 +1,7 @@
 package ss8_clean_code.exercise;
 
 /**
+ * Author: Le Huy C0323G1
  * Refactor result:
  * 1. Use tool format code of IDE Intellij (Option + Command + L). Because the code is unformatted
  * 2. A method getScore too complicated -> Extact this method (* following - line 8 below)
