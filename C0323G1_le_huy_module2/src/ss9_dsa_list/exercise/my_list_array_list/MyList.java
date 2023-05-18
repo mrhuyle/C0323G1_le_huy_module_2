@@ -1,7 +1,6 @@
 package ss9_dsa_list.exercise.my_list_array_list;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class MyList<E> {
     private int size = 0;
@@ -16,19 +15,13 @@ public class MyList<E> {
         elements = new Object[capacity];
     }
 
-    public void add(int index, E element) { //edit
+    public void add(int index, E element) {
         checkIndex(index);
-        if (checkCapacity()) {
-            System.out.println("The list is full. Input minCapacity > length of current list");
-            Scanner scanner = new Scanner(System.in);
-            int minCapacity = Integer.parseInt(scanner.nextLine());
-            ensureCapacity(minCapacity);
-        }
-        for (int i = size; i > index; i++) {
+        this.add(null);
+        for (int i = size-1; i > index; i--) {
             elements[i] = elements[i - 1];
         }
         elements[index] = element;
-        size++;
     }
 
     public E remove(int index) {
@@ -75,10 +68,8 @@ public class MyList<E> {
     }
 
     public boolean add(E element) {
-        if (checkCapacity()) {
-            elements[size] = element;
-            size++;
-        }
+        elements[size] = element;
+        size++;
         return true;
     }
 
@@ -104,13 +95,6 @@ public class MyList<E> {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + index);
         }
-    }
-
-    public boolean checkCapacity() {
-        if (size == elements.length-1) {
-            return true;
-        }
-        return false;
     }
 
     @Override

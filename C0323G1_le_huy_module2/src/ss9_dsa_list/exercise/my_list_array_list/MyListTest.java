@@ -9,16 +9,15 @@ public class MyListTest {
         listCharacters.add('d');
         listCharacters.add('e');
         System.out.println(listCharacters);
-        listCharacters.remove(2);
+        listCharacters.add(1, 'X');
         System.out.println(listCharacters);
-        System.out.println(listCharacters.size());
-        System.out.println(listCharacters.contains('a'));
-        System.out.println(listCharacters.contains(null));
-        System.out.println(listCharacters.contains('x'));
-        System.out.println(listCharacters.get(2));
+        System.out.println(listCharacters.get(1));
+        System.out.println(listCharacters.indexOf('X'));
+        listCharacters.remove(1);
+        System.out.println(listCharacters.contains('X'));
+        System.out.println(listCharacters);
         System.out.println(listCharacters.clone());
-        listCharacters.add(2,'x');
+        listCharacters.clear();
         System.out.println(listCharacters);
-
     }
 }
