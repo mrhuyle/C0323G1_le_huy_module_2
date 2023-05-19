@@ -18,7 +18,7 @@ public class MyList<E> {
     public void add(int index, E element) {
         checkIndex(index);
         this.add(null);
-        for (int i = size-1; i > index; i--) {
+        for (int i = size - 1; i > index; i--) {
             elements[i] = elements[i - 1];
         }
         elements[index] = element;
@@ -68,6 +68,9 @@ public class MyList<E> {
     }
 
     public boolean add(E element) {
+        if (elements.length == size) {
+            ensureCapacity(elements.length * 2);
+        }
         elements[size] = element;
         size++;
         return true;
@@ -99,13 +102,18 @@ public class MyList<E> {
 
     @Override
     public String toString() {
-        String result = ", elements = [";
-        for (int i = 0; i < size - 1; i++) {
-            result += elements[i].toString() + ",";
+        String result = "";
+        if (size == 0) {
+            return result = "[]";
+        } else {
+            result = ", elements = [";
+            for (int i = 0; i < size - 1; i++) {
+                result += elements[i].toString() + ",";
+            }
+            result += elements[size - 1] + "]";
+            return "MyList{" +
+                    "size=" + size + result
+                    + '}';
         }
-        result += elements[size - 1] + "]";
-        return "MyList{" +
-                "size=" + size + result
-                + '}';
     }
 }

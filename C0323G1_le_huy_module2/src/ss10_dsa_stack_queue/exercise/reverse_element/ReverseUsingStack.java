@@ -7,7 +7,7 @@ import java.util.Stack;
  * Author: Le Huy C0323G1
  * Decription: Practice using Stack to reverse: (1) intergers in array and (2) words in string
  * Method using: 2 methods
- * @ reverseInteger(Integer[] arr)
+ * @ reverseIntegerInArray(Integer[] arr)
  * @ reverseWordsInString(String str)
  */
 public class ReverseUsingStack {
@@ -15,14 +15,14 @@ public class ReverseUsingStack {
         System.out.println("Reverse intergers in array");
         Integer[] arrNum = {1, 2, 3, 4, 5};
         System.out.println(Arrays.toString(arrNum));
-        reverseIntegers(arrNum);
+        reverseIntegersInArray(arrNum);
         System.out.println("Reverse words in string");
         String str = "Truong Tan Hai";
         reverseWordsInString(str);
         System.out.println(str);
     }
 
-    public static void reverseIntegers(Integer[] arr) {
+    public static void reverseIntegersInArray(Integer[] arr) {
         Stack<Integer> stackNumbers = new Stack<>();
         for (int i = 0; i < arr.length; i++) {
             stackNumbers.push(arr[i]);
@@ -34,15 +34,15 @@ public class ReverseUsingStack {
     }
 
     public static void reverseWordsInString(String str) {
-        Stack<String> stackCharacter = new Stack<>();
+        Stack<String> stackWords = new Stack<>();
         String[] arrStr = str.split(" ");
         for (int i = 0; i < arrStr.length; i++) {
-            stackCharacter.push(arrStr[i]);
+            stackWords.push(arrStr[i]);
         }
         for (int i = 0; i < arrStr.length; i++) {
-            arrStr[i] = stackCharacter.pop();
+            arrStr[i] = stackWords.pop();
         }
-        str = "";
+        str = ""; //display result:
         for (int i = 0; i < arrStr.length; i++) {
             if (i == arrStr.length - 1) {
                 str += arrStr[i];
