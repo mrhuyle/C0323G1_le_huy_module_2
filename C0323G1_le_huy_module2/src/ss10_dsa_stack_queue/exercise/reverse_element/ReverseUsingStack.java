@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /**
- * Author: Le Huy C0323G1
- * Decription: Practice using Stack to reverse: (1) intergers in array and (2) words in string
- * Method using: 2 methods
- * @ reverseIntegerInArray(Integer[] arr)
- * @ reverseWordsInString(String str)
+ Author: Le Huy C0323G1
+ Decription: Practice using Stack to reverse: (1) intergers in array and (2) words in string
+ 2 methods used:
+ @ reverseIntegerInArray(Integer[] arr)
+ @ reverseWordsInString(String str)
  */
 public class ReverseUsingStack {
     public static void main(String[] args) {
