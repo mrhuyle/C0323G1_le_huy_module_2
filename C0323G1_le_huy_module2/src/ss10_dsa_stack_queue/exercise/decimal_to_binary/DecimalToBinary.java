@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /**
  * Author: Le Huy
- * Decription: decimal to binary using Stack
+ * Description: decimal to binary using Stack
  * Method: convertDecimalToBinary(int number) has param: number, return datatype: String.
  */
 public class DecimalToBinary {
@@ -24,7 +24,7 @@ public class DecimalToBinary {
             integerStack.push(i % 2);
         }
 
-        while (integerStack.size() != 0) {
+        while (!integerStack.isEmpty()) {
             result += integerStack.pop().toString();
         }
         if (number == 0) {
