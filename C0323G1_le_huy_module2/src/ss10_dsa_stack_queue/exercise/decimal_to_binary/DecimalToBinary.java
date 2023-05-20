@@ -27,6 +27,10 @@ public class DecimalToBinary {
         while (integerStack.size() != 0) {
             result += integerStack.pop().toString();
         }
-        return result;
+        if (number == 0) {
+            return result = "0";
+        } else {
+            return result;
+        }
     }
 }
