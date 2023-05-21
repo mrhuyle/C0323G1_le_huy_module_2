@@ -1,5 +1,7 @@
 package addtitional_exercise.model;
 
+import java.util.Objects;
+
 public abstract class Person {
     private String id = new String();
     private String name = new String();
@@ -19,6 +21,19 @@ public abstract class Person {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public String getName() {

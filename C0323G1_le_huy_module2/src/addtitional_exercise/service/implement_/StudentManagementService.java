@@ -86,6 +86,18 @@ public class StudentManagementService implements IStudentManagementService {
 
     @Override
     public void deleteStudentTeacher() {
-
+        System.out.println("Nhập mã sinh viên/giảng viên muốn xoá: ");
+        String id = scanner.nextLine();
+        System.out.println("Bạn có muốn xoá sinh viên/giảng viên có id " + id + ". Vui lòng chọn số: ");
+        System.out.println("1. Có");
+        System.out.println("2. Không");
+        int option = Integer.parseInt(scanner.nextLine());
+        if (option == 1) {
+            Person person = studentManagementRepository.getPersonById(id);
+            studentManagementRepository.deletePerson(person);
+            System.out.println("Bạn đã xoá thành công id " + id);
+        } else {
+            System.out.println("Bạn đã chọn không xóa");
+        }
     }
 }
