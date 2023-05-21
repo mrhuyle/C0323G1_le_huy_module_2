@@ -9,4 +9,13 @@ public class Student extends Person{
         this.className = className;
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "Sinh viên {" +
+                super.toString() +
+                ", lớp='" + className + '\'' +
+                ", điểm=" + score +
+                '}';
+    }
 }

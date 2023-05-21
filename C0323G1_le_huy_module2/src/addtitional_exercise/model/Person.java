@@ -44,4 +44,12 @@ public abstract class Person {
     public void setGender(boolean gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        return "Mã ='" + id + '\'' +
+                ", tên ='" + name + '\'' +
+                ", ngày sinh ='" + birthdate + '\'' +
+                ", giới tính =" + (gender ? "Nam" : "Nữ");
+    }
 }

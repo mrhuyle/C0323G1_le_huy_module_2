@@ -7,4 +7,12 @@ public class Teacher extends Person{
         super(id, name, birthdate, gender);
         this.subject = subject;
     }
+
+    @Override
+    public String toString() {
+        return "Giảng viên {" +
+                super.toString()+
+                ", chuyên môn='" + subject + '\'' +
+                '}';
+    }
 }
