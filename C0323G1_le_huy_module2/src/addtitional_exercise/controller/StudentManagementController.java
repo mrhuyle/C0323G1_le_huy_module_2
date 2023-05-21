@@ -1,9 +1,14 @@
 package addtitional_exercise.controller;
 
+import addtitional_exercise.service.implement_.StudentManagementService;
+import addtitional_exercise.service.interface_.IStudentManagementService;
 
 import java.util.Scanner;
 
 public class StudentManagementController {
+    private static IStudentManagementService studentManagementService = new StudentManagementService();
+    private static Scanner scanner = new Scanner(System.in);
+
     /**
      * Method menu() use to show the menu
      */
@@ -17,17 +22,16 @@ public class StudentManagementController {
             System.out.println("4. Thoát");
             System.out.println("Chọn chức năng: ");
 
-            Scanner scanner = new Scanner(System.in);
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
-                    //method
+                    studentManagementService.addStudentTeacher();
                     break;
                 case 2:
-                    //method
+                    studentManagementService.deleteStudentTeacher();
                     break;
                 case 3:
-                    //method
+                    studentManagementService.displayAll();
                     break;
                 case 4:
                     System.out.println("Bạn đã nhấn thoát chương trình");
