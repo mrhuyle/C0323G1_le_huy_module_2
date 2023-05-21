@@ -23,4 +23,9 @@ public class StudentManagementRepository implements IStudentManagementRepository
     public List<Person> getAll() {
         return personList;
     }
+
+    @Override
+    public void addPerson(Person person) {
+        personList.add(person);
+    }
 }

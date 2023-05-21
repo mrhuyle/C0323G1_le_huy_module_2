@@ -36,7 +36,6 @@ public class StudentManagementController {
                 case 4:
                     System.out.println("Bạn đã nhấn thoát chương trình");
                     System.exit(0);
-                    break;
             }
         }
         while (true);
