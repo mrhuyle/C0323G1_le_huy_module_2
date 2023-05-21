@@ -1,4 +1,4 @@
-package addtitional_exercise.model;
+package additional_exercise.model;
 
 public class Teacher extends Person{
     private String subject = new String();

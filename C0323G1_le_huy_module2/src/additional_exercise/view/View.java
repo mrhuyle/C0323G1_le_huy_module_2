@@ -1,6 +1,6 @@
-package addtitional_exercise.view;
+package additional_exercise.view;
 
-import addtitional_exercise.controller.StudentManagementController;
+import additional_exercise.controller.StudentManagementController;
 
 public class View {
     public static void main(String[] args) {

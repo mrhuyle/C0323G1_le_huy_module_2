@@ -1,4 +1,4 @@
-package addtitional_exercise.service.interface_;
+package additional_exercise.service.interface_;
 
 public interface IStudentManagementService {
     void addStudentTeacher();

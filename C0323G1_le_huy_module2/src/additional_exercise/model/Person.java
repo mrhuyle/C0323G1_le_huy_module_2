@@ -1,4 +1,4 @@
-package addtitional_exercise.model;
+package additional_exercise.model;
 
 import java.util.Objects;
 

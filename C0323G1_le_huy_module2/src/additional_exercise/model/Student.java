@@ -1,4 +1,4 @@
-package addtitional_exercise.model;
+package additional_exercise.model;
 
 public class Student extends Person{
     private String className = new String();

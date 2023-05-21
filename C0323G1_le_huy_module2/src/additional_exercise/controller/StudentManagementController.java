@@ -1,7 +1,7 @@
-package addtitional_exercise.controller;
+package additional_exercise.controller;
 
-import addtitional_exercise.service.implement_.StudentManagementService;
-import addtitional_exercise.service.interface_.IStudentManagementService;
+import additional_exercise.service.implement_.StudentManagementService;
+import additional_exercise.service.interface_.IStudentManagementService;
 
 import java.util.Scanner;
 

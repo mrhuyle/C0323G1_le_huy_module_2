@@ -1,9 +1,9 @@
-package addtitional_exercise.repository.implement_;
+package additional_exercise.repository.implement_;
 
-import addtitional_exercise.model.Person;
-import addtitional_exercise.model.Student;
-import addtitional_exercise.model.Teacher;
-import addtitional_exercise.repository.interface_.IStudentManagementRepository;
+import additional_exercise.model.Person;
+import additional_exercise.model.Student;
+import additional_exercise.model.Teacher;
+import additional_exercise.repository.interface_.IStudentManagementRepository;
 
 import java.util.ArrayList;
 import java.util.List;

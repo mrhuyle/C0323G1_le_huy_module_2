@@ -1,11 +1,11 @@
-package addtitional_exercise.service.implement_;
+package additional_exercise.service.implement_;
 
-import addtitional_exercise.model.Person;
-import addtitional_exercise.model.Student;
-import addtitional_exercise.model.Teacher;
-import addtitional_exercise.repository.implement_.StudentManagementRepository;
-import addtitional_exercise.repository.interface_.IStudentManagementRepository;
-import addtitional_exercise.service.interface_.IStudentManagementService;
+import additional_exercise.model.Person;
+import additional_exercise.model.Student;
+import additional_exercise.model.Teacher;
+import additional_exercise.repository.implement_.StudentManagementRepository;
+import additional_exercise.repository.interface_.IStudentManagementRepository;
+import additional_exercise.service.interface_.IStudentManagementService;
 
 import java.util.List;
 import java.util.Scanner;
