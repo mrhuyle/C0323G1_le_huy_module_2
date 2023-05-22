@@ -9,10 +9,11 @@ import java.util.TreeMap;
  * Author: Le Huy C0323G1
  * Decription: Practice using TreeMap to store word in String and count word's occurence(s).
  * Methods used: countWordInString(String string)
+ * Notice: regex \\s+ in string.split("\\s+")
  */
 public class WordTreeMap {
     public static void main(String[] args) {
-        String string = "abc abc   def abc def xyz";
+        String string = "abc abc           def abc def xyz xyz";
         countWordInString(string);
     }
 
