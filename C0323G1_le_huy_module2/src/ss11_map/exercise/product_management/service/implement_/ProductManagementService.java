@@ -17,9 +17,11 @@ public class ProductManagementService implements IProductManagementService {
     @Override
     public void displayAll() {
         productList = productManagementRepository.getAll();
+        System.out.println("*********** Hiển thị sản phẩm ********");
         for (Product product : productList) {
             System.out.println(product);
         }
+        System.out.println("**************************************");
     }
 
     @Override

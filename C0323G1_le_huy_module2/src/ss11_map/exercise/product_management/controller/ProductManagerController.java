@@ -11,7 +11,7 @@ public class ProductManagerController {
 
     public static void menu() {
         do {
-            System.out.println("_____________________________________________");
+            System.out.println("**************** GIAO DIỆN ************************");
             System.out.println("Vui lòng chọn chức năng theo số để tiếp tục");
             System.out.println("1. Thêm sản phẩm");
             System.out.println("2. Sửa sản phẩm");
