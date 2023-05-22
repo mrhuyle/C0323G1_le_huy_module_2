@@ -17,8 +17,8 @@ public class ProductManagerController {
             System.out.println("2. Sửa sản phẩm");
             System.out.println("3. Xoá sản phẩm");
             System.out.println("4. Hiển thị sản phẩm");
-            System.out.println("5. Tìm kiếm sản phẩm");
-            System.out.println("6. Sắp xếp sản phẩm");
+            System.out.println("5. Tìm kiếm sản phẩm theo tên");
+            System.out.println("6. Sắp xếp sản phẩm theo giá");
             System.out.println("0. Thoát");
             System.out.println("Chọn chức năng: ");
             int option = Integer.parseInt(scanner.nextLine());
@@ -40,8 +40,10 @@ public class ProductManagerController {
                     productManagementService.displayAll();
                     break;
                 case 5:
+                    productManagementService.searchProductName();
                     break;
                 case 6:
+                    productManagementService.sortProductPrice();
                     break;
             }
         } while (true);

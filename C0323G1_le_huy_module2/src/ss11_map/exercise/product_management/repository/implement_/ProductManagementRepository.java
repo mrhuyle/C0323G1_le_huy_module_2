@@ -4,6 +4,8 @@ import ss11_map.exercise.product_management.model.Product;
 import ss11_map.exercise.product_management.repository.interface_.IProductManagementRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProductManagementRepository implements IProductManagementRepository {
@@ -32,5 +34,40 @@ public class ProductManagementRepository implements IProductManagementRepository
     @Override
     public void deleteProduct(Product product) {
         products.remove(product);
+    }
+
+    @Override
+    public void sortProductPriceAscending() {
+        Collections.sort(products, new Comparator<Product>() {
+            @Override
+            public int compare(Product product1, Product product2) {
+                return product1.getPrice() - product2.getPrice();
+            }
+        });
+    }
+
+    @Override
+    public void sortProductPriceDescending() {
+        Collections.sort(products, new Comparator<Product>() {
+            @Override
+            public int compare(Product product1, Product product2) {
+                return product2.getPrice() - product1.getPrice();
+            }
+        });
+    }
+
+    @Override
+    public List<Product> getProductByName(String name) {
+        List<Product> resultList = new ArrayList<>();
+        for (Product product: products) {
+            if (product.getName().toLowerCase().contains(name)) {
+                resultList.add(product);
+            }
+        }
+        if (!resultList.isEmpty()) {
+            return resultList;
+        } else {
+            return null;
+        }
     }
 }

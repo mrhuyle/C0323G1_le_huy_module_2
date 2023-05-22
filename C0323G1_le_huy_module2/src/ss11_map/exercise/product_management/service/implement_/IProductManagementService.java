@@ -5,4 +5,6 @@ public interface IProductManagementService {
     void addProduct();
     void deleteProduct();
     void editProduct();
+    void sortProductPrice();
+    void searchProductName();
 }

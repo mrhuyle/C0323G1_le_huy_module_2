@@ -7,4 +7,7 @@ public interface IProductManagementRepository {
     List<Product> getAll();
     Product getProductById(String id);
     void deleteProduct(Product product);
+    void sortProductPriceAscending();
+    void sortProductPriceDescending();
+    List<Product> getProductByName(String name);
 }

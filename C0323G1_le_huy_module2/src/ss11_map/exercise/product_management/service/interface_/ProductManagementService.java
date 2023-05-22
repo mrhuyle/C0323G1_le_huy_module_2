@@ -33,7 +33,7 @@ public class ProductManagementService implements IProductManagementService {
         System.out.println("Nhập số lượng sản phẩm: ");
         int quantity = Integer.parseInt(scanner.nextLine());
         Product newProduct = new Product(id, name, price, quantity);
-        System.out.println("Bạn có muốn nhập sản phẩm có thông tin: " + newProduct.toString());
+        System.out.println("Bạn có muốn nhập sản phẩm có thông tin: " + newProduct);
         System.out.println("1. Có || 2. Không");
         int option = Integer.parseInt(scanner.nextLine());
         if (option == 1) {
@@ -73,30 +73,60 @@ public class ProductManagementService implements IProductManagementService {
                 case 1:
                     System.out.println("Nhập ID mới: ");
                     String newId = scanner.nextLine();
-                    System.out.println("Bạn đã sửa thành công mã sản phẩm mới là" + newId);
+                    System.out.println("Bạn đã sửa thành công mã sản phẩm mới là: " + newId);
                     product.setId(newId);
                     break;
                 case 2:
                     System.out.println("Nhập tên sản phẩm mới: ");
                     String newName = scanner.nextLine();
-                    System.out.println("Bạn đã sửa thành công tên sản phẩm mới là" + newName);
+                    System.out.println("Bạn đã sửa thành công tên sản phẩm mới là: " + newName);
                     product.setName(newName);
                     break;
                 case 3:
                     System.out.println("Nhập giá sản phẩm mới: ");
                     int newPrice = Integer.parseInt(scanner.nextLine());
-                    System.out.println("Bạn đã sửa thành công giá sản phẩm mới là" + newPrice);
+                    System.out.println("Bạn đã sửa thành công giá sản phẩm mới là: " + newPrice);
                     product.setPrice(newPrice);
                     break;
                 case 4:
                     System.out.println("Nhập số lượng sản phẩm mới: ");
                     int newQuantity = Integer.parseInt(scanner.nextLine());
-                    System.out.println("Bạn đã sửa thành công số lượng sản phẩm mới là" + newQuantity);
+                    System.out.println("Bạn đã sửa thành công số lượng sản phẩm mới là: " + newQuantity);
                     product.setPrice(newQuantity);
                     break;
-                case 5:
+                case 0:
                     ProductManagerController.menu();
             }
         } while (true);
+    }
+
+    @Override
+    public void sortProductPrice() {
+        System.out.println("Chọn cách thức sắp xếp theo giá: 1. Tăng dần || 2. Giảm dần");
+        int option = Integer.parseInt(scanner.nextLine());
+        if (option == 1) {
+            System.out.println("Bạn đã sắp xếp thành công sản phẩm theo thứ tự giá tăng dần");
+            productManagementRepository.sortProductPriceAscending();
+        } else {
+            System.out.println("Bạn đã sắp xếp thành công sản phẩm theo thứ tự giá giảm dần");
+            productManagementRepository.sortProductPriceDescending();
+        }
+
+    }
+
+    @Override
+    public void searchProductName() {
+        System.out.println("Nhập chuỗi ký tự liên quan tên sản phẩm: ");
+        String name = scanner.nextLine();
+        String searchName = name.toLowerCase();
+        System.out.println("Các sản phẩm liên quan chuỗi: " + name + " là");
+        List<Product> resultList = productManagementRepository.getProductByName(searchName);
+        if (resultList != null) {
+            for (Product product: resultList) {
+                System.out.println(product);
+            }
+        } else {
+            System.out.println("Không tìm thấy sản phẩm tương ứng chuỗi: " + name);
+        }
     }
 }
