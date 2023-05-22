@@ -7,4 +7,5 @@ public interface IProductManagementService {
     void editProduct();
     void sortProductPrice();
     void searchProductName();
+    void checkProductId(String id);
 }

@@ -10,10 +10,11 @@ import java.util.List;
 
 public class ProductManagementRepository implements IProductManagementRepository {
     private static List<Product> products = new ArrayList<>();
+
     static {
-        products.add(new Product("B001","Coca Cola",10000,100));
-        products.add(new Product("A002","Heineken",30000,200));
-        products.add(new Product("X003","Durex",10000,300));
+        products.add(new Product("B001", "Coca Cola", 10000, 100));
+        products.add(new Product("A002", "Heineken", 30000, 200));
+        products.add(new Product("X003", "Durex", 10000, 300));
     }
 
     @Override
@@ -23,7 +24,7 @@ public class ProductManagementRepository implements IProductManagementRepository
 
     @Override
     public Product getProductById(String id) {
-        for (Product product: products) {
+        for (Product product : products) {
             if (product.getId().equals(id)) {
                 return product;
             }
@@ -59,7 +60,7 @@ public class ProductManagementRepository implements IProductManagementRepository
     @Override
     public List<Product> getProductByName(String name) {
         List<Product> resultList = new ArrayList<>();
-        for (Product product: products) {
+        for (Product product : products) {
             if (product.getName().toLowerCase().contains(name)) {
                 resultList.add(product);
             }
@@ -69,5 +70,15 @@ public class ProductManagementRepository implements IProductManagementRepository
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean checkProductId(String id) {
+        for (Product product : products) {
+            if (product.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

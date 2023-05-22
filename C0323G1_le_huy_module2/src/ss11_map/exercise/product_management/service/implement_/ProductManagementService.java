@@ -46,6 +46,7 @@ public class ProductManagementService implements IProductManagementService {
     public void deleteProduct() {
         System.out.println("Nhập mã sản phẩm cần xoá: ");
         String id = scanner.nextLine();
+        checkProductId(id);
         Product product = productManagementRepository.getProductById(id);
         System.out.println("Bạn có muốn xoá sản phẩm có ID: " + id);
         System.out.println("1. Có || 2. Không");
@@ -62,6 +63,7 @@ public class ProductManagementService implements IProductManagementService {
     public void editProduct() {
         System.out.println("Nhập mã sản phẩm cần sửa: ");
         String id = scanner.nextLine();
+        checkProductId(id);
         Product product = productManagementRepository.getProductById(id);
         MENU:
         do {
@@ -128,6 +130,17 @@ public class ProductManagementService implements IProductManagementService {
             }
         } else {
             System.out.println("Không tìm thấy sản phẩm tương ứng chuỗi: " + name);
+        }
+    }
+
+    public void checkProductId(String id) {
+        while (!productManagementRepository.checkProductId(id)) {
+            System.out.println("Không tìm thấy id: " + id);
+            System.out.println("Vui lòng nhập lại hoặc bấm 0 để thoát");
+            id = scanner.nextLine();
+            if (id.equals("0")) {
+                ProductManagerController.menu();
+            }
         }
     }
 }

@@ -10,4 +10,5 @@ public interface IProductManagementRepository {
     void sortProductPriceAscending();
     void sortProductPriceDescending();
     List<Product> getProductByName(String name);
+    boolean checkProductId(String id);
 }

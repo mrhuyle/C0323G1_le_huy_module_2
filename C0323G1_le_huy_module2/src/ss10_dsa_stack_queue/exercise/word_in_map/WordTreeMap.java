@@ -19,9 +19,8 @@ public class WordTreeMap {
         }
         Set<String> keySet = wordTreeMap.keySet();
         System.out.println("String: " + string);
-        for (String key: keySet) {
+        for (String key : keySet) {
             System.out.println("Word: " + key + ". Numbers of word: " + wordTreeMap.get(key));
         }
     }
-
 }
