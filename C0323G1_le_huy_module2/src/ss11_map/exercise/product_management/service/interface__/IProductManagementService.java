@@ -1,4 +1,4 @@
-package ss11_map.exercise.product_management.service.implement_;
+package ss11_map.exercise.product_management.service.interface__;
 
 public interface IProductManagementService {
     void displayAll();

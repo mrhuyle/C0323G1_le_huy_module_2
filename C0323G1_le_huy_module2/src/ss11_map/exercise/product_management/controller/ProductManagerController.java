@@ -1,7 +1,7 @@
 package ss11_map.exercise.product_management.controller;
 
-import ss11_map.exercise.product_management.service.implement_.IProductManagementService;
-import ss11_map.exercise.product_management.service.interface_.ProductManagementService;
+import ss11_map.exercise.product_management.service.interface__.IProductManagementService;
+import ss11_map.exercise.product_management.service.implement_.ProductManagementService;
 
 import java.util.Scanner;
 

@@ -1,10 +1,10 @@
-package ss11_map.exercise.product_management.service.interface_;
+package ss11_map.exercise.product_management.service.implement_;
 
 import ss11_map.exercise.product_management.controller.ProductManagerController;
 import ss11_map.exercise.product_management.model.Product;
 import ss11_map.exercise.product_management.repository.implement_.ProductManagementRepository;
 import ss11_map.exercise.product_management.repository.interface_.IProductManagementRepository;
-import ss11_map.exercise.product_management.service.implement_.IProductManagementService;
+import ss11_map.exercise.product_management.service.interface__.IProductManagementService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -122,7 +122,7 @@ public class ProductManagementService implements IProductManagementService {
         System.out.println("Các sản phẩm liên quan chuỗi: " + name + " là");
         List<Product> resultList = productManagementRepository.getProductByName(searchName);
         if (resultList != null) {
-            for (Product product: resultList) {
+            for (Product product : resultList) {
                 System.out.println(product);
             }
         } else {
