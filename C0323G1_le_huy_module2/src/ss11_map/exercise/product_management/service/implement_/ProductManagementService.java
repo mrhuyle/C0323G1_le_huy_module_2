@@ -63,6 +63,7 @@ public class ProductManagementService implements IProductManagementService {
         System.out.println("Nhập mã sản phẩm cần sửa: ");
         String id = scanner.nextLine();
         Product product = productManagementRepository.getProductById(id);
+        MENU:
         do {
             System.out.println("********************************************************************************");
             System.out.println("Sản phẩm bạn cần sửa có thông tin là: " + product.toString());
@@ -95,7 +96,7 @@ public class ProductManagementService implements IProductManagementService {
                     product.setPrice(newQuantity);
                     break;
                 case 0:
-                    ProductManagerController.menu();
+                    break MENU;
             }
         } while (true);
     }
