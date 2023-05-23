@@ -4,23 +4,22 @@ import java.util.LinkedList;
 
 public class MaxConsecutiveCharacter {
     public static void main(String[] args) {
-        String string = "abcdefabcndefjkl";
+        String string = "abcabcd";
         LinkedList<Character> charConsecutiveList = new LinkedList<>();
-        for (int i = 0; i < string.length()-1; i++) {
+        for (int i = 0; i < string.length() - 1; i++) {
             LinkedList<Character> tempList = new LinkedList<>();
             tempList.add(string.charAt(i));
-            for (int j = i + 1; j < string.length()-1; j++) {
-                if (string.charAt(j) > tempList.getLast() && !tempList.contains(string.charAt(j))) {
+            for (int j = i + 1; j < string.length() - 1; j++) {
+                if (tempList.size()>0 && string.charAt(j) > tempList.getLast()) {
                     tempList.add(string.charAt(j));
                 } else {
-                    tempList.clear();
+                    break;
                 }
             }
             if (tempList.size() > charConsecutiveList.size()) {
                 charConsecutiveList.clear();
                 charConsecutiveList.addAll(tempList);
             }
-            tempList.clear();
         }
         System.out.println(string);
         for (Character character : charConsecutiveList) {
