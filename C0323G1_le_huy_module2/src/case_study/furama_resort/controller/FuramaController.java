@@ -3,7 +3,7 @@ package case_study.furama_resort.controller;
 import java.util.Scanner;
 
 public class FuramaController {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void displayMainMenu() {
         System.out.println("*** This is the main menu. Please choose one of the options below: ***\n" +
