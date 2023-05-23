@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * Author: Le Huy
+ * Description: Using binary search algorithm and recursion to find a value in number array (input from user)
+ * Method: binarySearch(int[] array, int left, int right, int value)
+ * Notice: using recursion
+ */
 public class FindNumberInArray {
     public static void main(String[] args) {
         //Create a array by user:
