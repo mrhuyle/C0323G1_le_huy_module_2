@@ -1,7 +1,10 @@
 package ss13_sorting_algorithm.exercise.insertion_sort_algorithm;
 
 import java.util.Arrays;
-
+/**
+ * Author: Le Huy
+ * Description: Description in details about the insertion sort algorithm.
+ */
 public class InsertionSortAlgorithm {
     public static void main(String[] args) {
         //Create an array:
