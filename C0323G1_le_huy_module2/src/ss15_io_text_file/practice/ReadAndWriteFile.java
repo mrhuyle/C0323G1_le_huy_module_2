@@ -19,6 +19,7 @@ public class ReadAndWriteFile {
                 numbers.add(Integer.parseInt(line));
             }
             bufferedReader.close();
+            fileReader.close();
         } catch (Exception e) {
             System.out.println("File not found or something else");
         }
@@ -34,6 +35,7 @@ public class ReadAndWriteFile {
             bufferedWriter.write("The max value: " + max);
             bufferedWriter.flush();
             bufferedWriter.close();
+            fileWriter.close();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
