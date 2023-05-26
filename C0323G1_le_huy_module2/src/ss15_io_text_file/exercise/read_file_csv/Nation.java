@@ -1,5 +1,7 @@
 package ss15_io_text_file.exercise.read_file_csv;
 
+import java.util.Objects;
+
 public class Nation {
     private int id;
     private String code;
@@ -43,5 +45,18 @@ public class Nation {
         return "Nation ID: " + getId() + " , "
                 + "Nation Code: " + getCode() + " , "
                 + "Nation Name: " + getNationName();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Nation nation = (Nation) o;
+        return Objects.equals(code, nation.code) && Objects.equals(nationName, nation.nationName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, nationName);
     }
 }
