@@ -19,6 +19,10 @@ public class Main {
             try {
                 System.out.println("First side: ");
                 firstSide = Integer.parseInt(scanner.nextLine());
+                if (firstSide<=0) {
+                    System.out.println("The side should not be negative");
+                    continue;
+                }
                 break;
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Wrong number format. Input again");
@@ -28,6 +32,10 @@ public class Main {
             try {
                 System.out.println("Second side: ");
                 secondSide = Integer.parseInt(scanner.nextLine());
+                if (secondSide<=0) {
+                    System.out.println("The side should not be negative");
+                    continue;
+                }
                 break;
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Wrong number format. Input again");
@@ -37,6 +45,10 @@ public class Main {
             try {
                 System.out.println("Third side: ");
                 thirdSide = Integer.parseInt(scanner.nextLine());
+                if (thirdSide<=0) {
+                    System.out.println("The side should not be negative");
+                    continue;
+                }
                 break;
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Wrong number format. Input again");
@@ -54,8 +66,6 @@ public class Main {
     public static void checkTriangle(int a, int b, int c) throws IllegalTriangleException {
         if (a + b < c || a + c < b || b + c < a) {
             throw new IllegalTriangleException("Three sides do not match properties of a triangle");
-        } else if (a < 0 || b < 0 || c < 0) {
-            throw new IllegalTriangleException("Sides has negative number");
         } else {
             System.out.println("The triangle with three sides: " + a + "," + b + "," + c + " has been created");
         }
