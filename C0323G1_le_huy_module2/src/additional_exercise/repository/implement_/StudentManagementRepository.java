@@ -10,15 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManagementRepository implements IStudentManagementRepository {
-    private static List<Person> personList = new ArrayList<>();
+    private static List<Person> personList = readFileCsv("src/additional_exercise/repository/person.csv");
 
-    //Student(String id, String name, String birthdate, boolean gender, String className, float score)
-    //Teacher(String id, String name, String birthdate, boolean gender, String subject)
-    static {
-        personList.add(new Student("S001", "Le Huy", "20/06/1989", true, "C0323G1", 9.5f));
-        personList.add(new Student("S002", "Nguyen Thi B", "01/01/1999", false, "C0423G1", 8.5f));
-        personList.add(new Teacher("T003", "Louis Le", "20/06/1979", true, "Java"));
-    }
+//    static {
+//        personList.add(new Student("S001", "Le Huy", "20/06/1989", true, "C0323G1", 9.5f));
+//        personList.add(new Student("S002", "Nguyen Thi B", "01/01/1999", false, "C0423G1", 8.5f));
+//        personList.add(new Teacher("T003", "Louis Le", "20/06/1979", true, "Java"));
+//    }
 
     @Override
     public List<Person> getAll() {
@@ -45,8 +43,7 @@ public class StudentManagementRepository implements IStudentManagementRepository
         return null;
     }
 
-    @Override
-    public List<Person> readFileCsv(String filePath) {
+    public static List<Person> readFileCsv(String filePath) {
         List<Person> newPersonList = new ArrayList<>();
         try {
             File file = new File(filePath);
@@ -58,10 +55,10 @@ public class StudentManagementRepository implements IStudentManagementRepository
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arrString = line.split(",");
-                if (arrString[0].charAt(0) == 'S') {
+                if (arrString.length == 6) {
                     Person newStudent = new Student(arrString[0], arrString[1], arrString[2], Boolean.getBoolean(arrString[3]), arrString[4], Float.parseFloat(arrString[5]));
                     newPersonList.add(newStudent);
-                } else if (arrString[0].charAt(0) == 'T') {
+                } else if (arrString.length == 5) {
                     Person newTeacher = new Teacher(arrString[0], arrString[1], arrString[2], Boolean.getBoolean(arrString[3]), arrString[4]);
                     newPersonList.add(newTeacher);
                 }

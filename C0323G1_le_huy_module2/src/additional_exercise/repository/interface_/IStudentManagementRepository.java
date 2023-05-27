@@ -2,6 +2,7 @@ package additional_exercise.repository.interface_;
 
 import additional_exercise.model.Person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface IStudentManagementRepository {
@@ -9,5 +10,8 @@ public interface IStudentManagementRepository {
     void addPerson(Person person);
     void deletePerson(Person person);
     Person getPersonById(String id);
-    List<Person> readFileCsv(String filePath);
+    static List<Person> readFileCsv(String filePath) {
+        List<Person> list = new ArrayList<>();
+        return list;
+    }
 }
