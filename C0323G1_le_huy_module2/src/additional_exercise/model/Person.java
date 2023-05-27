@@ -8,6 +8,9 @@ public abstract class Person {
     private String birthdate = new String();
     private boolean gender;
 
+    public Person() {
+    }
+
     public Person(String id, String name, String birthdate, boolean gender) {
         this.id = id;
         this.name = name;
@@ -66,5 +69,9 @@ public abstract class Person {
                 ", tên ='" + name + '\'' +
                 ", ngày sinh ='" + birthdate + '\'' +
                 ", giới tính =" + (gender ? "Nam" : "Nữ");
+    }
+
+    public String getInfo() {
+        return "";
     }
 }

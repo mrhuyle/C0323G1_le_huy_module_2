@@ -14,4 +14,6 @@ public interface IStudentManagementRepository {
         List<Person> list = new ArrayList<>();
         return list;
     }
+    void writeFileCsv(String filePath);
+    void getInfor();
 }

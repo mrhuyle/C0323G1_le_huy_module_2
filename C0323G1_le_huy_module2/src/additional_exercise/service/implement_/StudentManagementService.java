@@ -26,6 +26,7 @@ public class StudentManagementService implements IStudentManagementService {
         } else {
             addTeacher();
         }
+        studentManagementRepository.writeFileCsv("src/additional_exercise/repository/person.csv");
     }
 
     @Override

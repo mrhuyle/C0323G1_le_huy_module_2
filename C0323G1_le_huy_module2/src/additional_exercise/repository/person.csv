@@ -1,3 +1,4 @@
-"S001", "Le Huy", "20/06/1989", true, "C0323G1", 9.5f
-"S002", "Nguyen Thi B", "01/01/1999", false, "C0423G1", 8.5f
-"T003", "Louis Le", "20/06/1979", true, "Java"
+S001,Le Huy,20/06/1989,true,C0323G1,9.5
+S002,Nguyen Thi B,01/01/1999,false,C0423G1,8.5
+T003,Louis Le,20/06/1979,true,Java
+S008,Nga,27/03/1993,false,C05,10.0

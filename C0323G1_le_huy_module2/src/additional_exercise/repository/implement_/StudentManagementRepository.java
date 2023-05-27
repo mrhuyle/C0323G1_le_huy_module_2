@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManagementRepository implements IStudentManagementRepository {
+    public static void main(String[] args) {
+        StudentManagementRepository a = new StudentManagementRepository();
+//        a.writeFileCsv("src/additional_exercise/repository/person.csv");
+        a.getInfor();
+    }
     private static List<Person> personList = readFileCsv("src/additional_exercise/repository/person.csv");
 
 //    static {
@@ -56,10 +61,10 @@ public class StudentManagementRepository implements IStudentManagementRepository
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arrString = line.split(",");
                 if (arrString.length == 6) {
-                    Person newStudent = new Student(arrString[0], arrString[1], arrString[2], Boolean.getBoolean(arrString[3]), arrString[4], Float.parseFloat(arrString[5]));
+                    Person newStudent = new Student(arrString[0], arrString[1], arrString[2], Boolean.parseBoolean(arrString[3]), arrString[4], Float.parseFloat(arrString[5]));
                     newPersonList.add(newStudent);
                 } else if (arrString.length == 5) {
-                    Person newTeacher = new Teacher(arrString[0], arrString[1], arrString[2], Boolean.getBoolean(arrString[3]), arrString[4]);
+                    Person newTeacher = new Teacher(arrString[0], arrString[1], arrString[2], Boolean.parseBoolean(arrString[3]), arrString[4]);
                     newPersonList.add(newTeacher);
                 }
             }
@@ -72,5 +77,33 @@ public class StudentManagementRepository implements IStudentManagementRepository
             throw new RuntimeException(e);
         }
         return newPersonList;
+    }
+
+    public void getInfor() {
+        for (Person person: personList) {
+            System.out.println(person.getInfo());
+        }
+    }
+
+    public void writeFileCsv(String filePath) {
+        try {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                throw new FileNotFoundException();
+            }
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Person person: personList) {
+                bufferedWriter.write(person.getInfo());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (FileNotFoundException fileNotFoundException) {
+            System.out.println("Không tìm thấy file");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
