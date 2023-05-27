@@ -31,12 +31,38 @@ public class StudentManagementService implements IStudentManagementService {
 
     @Override
     public void addStudent() {
-        System.out.println("Nhập mã sinh viên: ");
-        String id = scanner.nextLine();
+        //Input id and check:
+        String id;
+        do {
+            try {
+                System.out.println("Nhập mã sinh viên: ");
+                id = scanner.nextLine();
+                if (!studentManagementRepository.checkID(id)) {
+                    throw new RuntimeException();
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Mã sinh viên/teacher phải theo định dạng: \n" +
+                        "Ký tự S (student)/Ký tự T (teacher) và theo sau là số có 3 chữ số. Nhập lại");
+            }
+        } while (true);
+        //Input name:
         System.out.println("Nhập tên sinh viên: ");
         String name = scanner.nextLine();
-        System.out.println("Nhập ngày sinh của sinh viên: ");
-        String birthdate = scanner.nextLine();
+        //Input birthdate and check:
+        String birthdate;
+        do {
+            try {
+                System.out.println("Nhập ngày sinh của sinh viên: ");
+                birthdate = scanner.nextLine();
+                if (!studentManagementRepository.checkDate(birthdate)) {
+                    throw new RuntimeException();
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Ngày phải theo định dạng dd/mm/yyyy. Vui lòng nhập lại");
+            }
+        } while (true);
         System.out.println("Nhập giới tính của sinh viên: 1. Nam/ 2. Nữ");
         int genderOption = Integer.parseInt(scanner.nextLine());
         boolean gender;

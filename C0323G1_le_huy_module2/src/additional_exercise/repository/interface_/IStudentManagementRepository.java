@@ -16,4 +16,6 @@ public interface IStudentManagementRepository {
     }
     void writeFileCsv(String filePath);
     void getInfor();
+    boolean checkID(String id);
+    boolean checkDate(String date);
 }

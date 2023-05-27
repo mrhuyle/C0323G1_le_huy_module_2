@@ -8,13 +8,10 @@ import additional_exercise.repository.interface_.IStudentManagementRepository;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentManagementRepository implements IStudentManagementRepository {
-    public static void main(String[] args) {
-        StudentManagementRepository a = new StudentManagementRepository();
-//        a.writeFileCsv("src/additional_exercise/repository/person.csv");
-        a.getInfor();
-    }
     private static List<Person> personList = readFileCsv("src/additional_exercise/repository/person.csv");
 
 //    static {
@@ -104,6 +101,30 @@ public class StudentManagementRepository implements IStudentManagementRepository
             System.out.println("Không tìm thấy file");
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean checkID(String id) {
+        String pattern = "^[ST]\\d{3}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(id);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkDate(String date) {
+        String pattern = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(date);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

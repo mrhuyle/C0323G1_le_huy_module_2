@@ -4,6 +4,7 @@ import additional_exercise.service.implement_.StudentManagementService;
 import additional_exercise.service.interface_.IStudentManagementService;
 
 import java.util.Scanner;
+import java.util.zip.DataFormatException;
 
 public class StudentManagementController {
     private static IStudentManagementService studentManagementService = new StudentManagementService();
@@ -26,7 +27,7 @@ public class StudentManagementController {
                     try {
                         int option = Integer.parseInt(scanner.nextLine());
                         if (option < 1 || option > 4) {
-                            throw new RuntimeException("Bạn chỉ được nhập số từ 1 - 4. Vui lòng nhập lại");
+                            throw new DataFormatException();
                         }
                         switch (option) {
                             case 1:
@@ -44,8 +45,8 @@ public class StudentManagementController {
                         }
                     } catch (NumberFormatException numberFormatException) {
                         System.out.println("Bạn chỉ được nhập số từ 1 - 4. Vui lòng nhập lại");
-                    } catch (RuntimeException runtimeException) {
-                        System.out.println("Bạn chỉ được nhập số từ 1 - 4. Vui lòng nhập lại");
+                    } catch (DataFormatException e) {
+                        System.out.println();
                     }
             } while (true);
 
