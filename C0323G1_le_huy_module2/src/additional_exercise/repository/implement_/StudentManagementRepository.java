@@ -5,6 +5,7 @@ import additional_exercise.model.Student;
 import additional_exercise.model.Teacher;
 import additional_exercise.repository.interface_.IStudentManagementRepository;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +37,43 @@ public class StudentManagementRepository implements IStudentManagementRepository
 
     @Override
     public Person getPersonById(String id) {
-        for (Person person: personList) {
+        for (Person person : personList) {
             if (person.getId().equals(id)) {
                 return person;
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Person> readFileCsv(String filePath) {
+        List<Person> newPersonList = new ArrayList<>();
+        try {
+            File file = new File(filePath);
+            FileReader fileReader = new FileReader(file);
+            if (!file.exists()) {
+                throw new FileNotFoundException();
+            }
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] arrString = line.split(",");
+                if (arrString[0].charAt(0) == 'S') {
+                    Person newStudent = new Student(arrString[0], arrString[1], arrString[2], Boolean.getBoolean(arrString[3]), arrString[4], Float.parseFloat(arrString[5]));
+                    newPersonList.add(newStudent);
+                } else if (arrString[0].charAt(0) == 'T') {
+                    Person newTeacher = new Teacher(arrString[0], arrString[1], arrString[2], Boolean.getBoolean(arrString[3]), arrString[4]);
+                    newPersonList.add(newTeacher);
+                }
+            }
+            bufferedReader.close();
+            fileReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Không tìm thấy file");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return newPersonList;
     }
 }

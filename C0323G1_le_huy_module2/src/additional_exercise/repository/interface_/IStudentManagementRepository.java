@@ -9,4 +9,5 @@ public interface IStudentManagementRepository {
     void addPerson(Person person);
     void deletePerson(Person person);
     Person getPersonById(String id);
+    List<Person> readFileCsv(String filePath);
 }
