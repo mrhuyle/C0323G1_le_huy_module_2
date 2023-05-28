@@ -5,6 +5,7 @@ import additional_exercise.model.Student;
 import additional_exercise.model.Teacher;
 import additional_exercise.repository.implement_.StudentManagementRepository;
 import additional_exercise.repository.interface_.IStudentManagementRepository;
+import additional_exercise.untils.DuplicateDataException;
 import additional_exercise.untils.GenderOptionException;
 import additional_exercise.service.interface_.IStudentManagementService;
 import additional_exercise.untils.InputScoreException;
@@ -54,12 +55,17 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập mã sinh viên: ");
                 id = scanner.nextLine();
+                if (!studentManagementRepository.checkIdDuplicate(id)) {
+                    throw new DuplicateDataException();
+                }
                 if (!studentManagementRepository.checkIdStudentFormat(id) || id.trim().isEmpty()) {
                     throw new RuntimeException();
                 }
                 break;
+            } catch (DuplicateDataException e) {
+                System.out.println("Id đã tồn tại. Nhập lại");
             } catch (RuntimeException runtimeException) {
-                System.out.println("Mã sinh viên phải theo định dạng: \n" +
+                System.out.println("Mã sinh viên phải theo định dạng: " +
                         "Ký tự S (student) và theo sau là số có 3 chữ số. Nhập lại");
             }
         } while (true);
@@ -171,10 +177,15 @@ public class StudentManagementService implements IStudentManagementService {
                 if (!studentManagementRepository.checkIdTeacherFormat(id) || id.trim().isEmpty()) {
                     throw new RuntimeException("Mã giảng viên sai định dạng");
                 }
+                if (!studentManagementRepository.checkIdDuplicate(id)) {
+                    throw new DuplicateDataException();
+                }
                 break;
             } catch (RuntimeException runtimeException) {
                 System.out.println("Mã giảng viên phải theo định dạng: \n" +
                         "Ký tự T (teacher) và theo sau là số có 3 chữ số. Nhập lại");
+            } catch (DuplicateDataException e) {
+                System.out.println("Id đã tồn tại. Nhập lại");
             }
         } while (true);
 
@@ -277,5 +288,6 @@ public class StudentManagementService implements IStudentManagementService {
         } else {
             System.out.println("Bạn đã chọn không xóa");
         }
+        studentManagementRepository.writeFileCsv("src/additional_exercise/repository/person.csv");
     }
 }

@@ -12,6 +12,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StudentManagementRepository implements IStudentManagementRepository {
+//    public static void main(String[] args) {
+//        StudentManagementRepository a = new StudentManagementRepository();
+//        String id = "T003";
+//        a.checkIdDuplicate(id);
+//    }
     private static List<Person> personList = readFileCsv("src/additional_exercise/repository/person.csv");
 
 //    static {
@@ -150,5 +155,15 @@ public class StudentManagementRepository implements IStudentManagementRepository
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean checkIdDuplicate(String id) {
+        for (Person person: personList) {
+            if (person.getId().equals(id)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

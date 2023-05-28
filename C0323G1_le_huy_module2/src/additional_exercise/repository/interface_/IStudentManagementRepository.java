@@ -20,4 +20,6 @@ public interface IStudentManagementRepository {
     boolean checkIdTeacherFormat(String id);
     boolean checkDateFormat(String date);
     boolean checkClassNameFormat (String className);
+
+    boolean checkIdDuplicate(String id);
 }
