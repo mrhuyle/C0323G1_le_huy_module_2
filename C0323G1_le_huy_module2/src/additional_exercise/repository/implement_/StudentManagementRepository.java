@@ -105,7 +105,7 @@ public class StudentManagementRepository implements IStudentManagementRepository
     }
 
     @Override
-    public boolean checkID(String id) {
+    public boolean checkIdFormat(String id) {
         String pattern = "^[ST]\\d{3}$";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(id);
@@ -117,10 +117,22 @@ public class StudentManagementRepository implements IStudentManagementRepository
     }
 
     @Override
-    public boolean checkDate(String date) {
+    public boolean checkDateFormat(String date) {
         String pattern = "^\\d{2}/\\d{2}/\\d{4}$";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(date);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkClassNameFormat(String className) {
+        String pattern = "^[CA]\\d{2}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(className);
         if (matcher.matches()) {
             return true;
         } else {

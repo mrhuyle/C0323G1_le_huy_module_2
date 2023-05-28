@@ -1,13 +1,13 @@
 package additional_exercise.service.implement_;
 
-import additional_exercise.controller.CustomException;
 import additional_exercise.model.Person;
 import additional_exercise.model.Student;
 import additional_exercise.model.Teacher;
 import additional_exercise.repository.implement_.StudentManagementRepository;
 import additional_exercise.repository.interface_.IStudentManagementRepository;
-import additional_exercise.service.exception.GenderOptionException;
+import additional_exercise.untils.GenderOptionException;
 import additional_exercise.service.interface_.IStudentManagementService;
+import additional_exercise.untils.InputScoreException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -39,7 +39,7 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập mã sinh viên: ");
                 id = scanner.nextLine();
-                if (!studentManagementRepository.checkID(id)) {
+                if (!studentManagementRepository.checkIdFormat(id)) {
                     throw new RuntimeException();
                 }
                 break;
@@ -57,7 +57,7 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập ngày sinh của sinh viên: ");
                 birthdate = scanner.nextLine();
-                if (!studentManagementRepository.checkDate(birthdate)) {
+                if (!studentManagementRepository.checkDateFormat(birthdate)) {
                     throw new RuntimeException();
                 }
                 break;
@@ -75,7 +75,7 @@ public class StudentManagementService implements IStudentManagementService {
                 try {
                     genderOption = Integer.parseInt(scanner.nextLine());
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("Nhập sai định dạng số");
+                    System.out.println("Nhập sai định dạng số. Nhập lại");
                     continue;
                 }
                 if (genderOption == 1) {
@@ -90,10 +90,44 @@ public class StudentManagementService implements IStudentManagementService {
                 System.out.println("Chỉ được nhập số 1 hoặc số 2. Nhập lại: ");
             }
         } while (true);
-        System.out.println("Nhập lớp của sinh viên: ");
-        String className = scanner.nextLine();
-        System.out.println("Nhập điểm của sinh viên: ");
-        float score = Float.parseFloat(scanner.nextLine());
+
+        //Input class name:
+        String className;
+        do {
+            try {
+                System.out.println("Nhập lớp của sinh viên");
+                className = scanner.nextLine();
+                if (!studentManagementRepository.checkClassNameFormat(className)) {
+                    throw new RuntimeException();
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Tên lớp phải theo định dạng: \n" +
+                        "Ký tự C (fulltime)/Ký tự A (partime) và theo sau là số có 2 chữ số. Nhập lại");
+            }
+        } while (true);
+
+        //Input score:
+        float score;
+        do {
+            try {
+                try {
+                    System.out.println("Nhập điểm của sinh viên: ");
+                    score = Float.parseFloat(scanner.nextLine());
+                } catch (NumberFormatException numberFormatException) {
+                    System.out.println("Nhập sai định dạng điểm");
+                    continue;
+                }
+                if (score < 0 || score > 10) {
+                    throw new InputScoreException("Điểm số phải từ 1 đến 10");
+                }
+                break;
+            } catch (InputScoreException inputScoreException) {
+                System.out.println("Điểm số phải từ 1 đến 10");
+            }
+        } while (true);
+
+        //Create new student:
         Person person = new Student(id, name, birthdate, gender, className, score);
         studentManagementRepository.addPerson(person);
         System.out.println("Bạn đã thêm mới thành công");

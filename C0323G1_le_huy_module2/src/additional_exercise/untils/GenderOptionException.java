@@ -1,4 +1,4 @@
-package additional_exercise.service.exception;
+package additional_exercise.untils;
 
 public class GenderOptionException extends Exception{
     public GenderOptionException() {
