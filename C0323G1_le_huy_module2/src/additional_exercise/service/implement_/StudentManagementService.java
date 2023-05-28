@@ -18,16 +18,31 @@ public class StudentManagementService implements IStudentManagementService {
 
     @Override
     public void addStudentTeacher() {
-        System.out.println("Bạn muốn nhập đối tượng nào? Vui lòng chọn số tương ứng: ");
-        System.out.println("1. Sinh viên");
-        System.out.println("2. Giảng viên");
-        System.out.println("Chọn : ");
-        int option = Integer.parseInt(scanner.nextLine());
-        if (option == 1) {
-            addStudent();
-        } else {
-            addTeacher();
-        }
+        int option;
+        do {
+            try {
+                System.out.println("Bạn muốn nhập đối tượng nào? Vui lòng chọn số tương ứng: \n" +
+                        "1. Sinh viên\n" +
+                        "2. Giảng viên");
+                try {
+                    option = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException numberFormatException) {
+                    System.out.println("Nhập sai định dạng số");
+                    continue;
+                }
+
+                if (option == 1) {
+                    addStudent();
+                } else if (option == 2) {
+                    addTeacher();
+                } else {
+                    throw new GenderOptionException();
+                }
+                break;
+            } catch (GenderOptionException genderOptionException) {
+                System.out.println("Chỉ được nhập số 1 hoặc số 2. Nhập lại:");
+            }
+        } while (true);
         studentManagementRepository.writeFileCsv("src/additional_exercise/repository/person.csv");
     }
 
