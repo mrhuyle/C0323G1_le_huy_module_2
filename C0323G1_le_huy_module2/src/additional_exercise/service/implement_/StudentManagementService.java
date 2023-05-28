@@ -33,32 +33,44 @@ public class StudentManagementService implements IStudentManagementService {
 
     @Override
     public void addStudent() {
-        //Input id and check:
+        //Input id:
         String id;
         do {
             try {
                 System.out.println("Nhập mã sinh viên: ");
                 id = scanner.nextLine();
-                if (!studentManagementRepository.checkIdFormat(id)) {
+                if (!studentManagementRepository.checkIdStudentFormat(id) || id.trim().isEmpty()) {
                     throw new RuntimeException();
                 }
                 break;
             } catch (RuntimeException runtimeException) {
-                System.out.println("Mã sinh viên/teacher phải theo định dạng: \n" +
-                        "Ký tự S (student)/Ký tự T (teacher) và theo sau là số có 3 chữ số. Nhập lại");
+                System.out.println("Mã sinh viên phải theo định dạng: \n" +
+                        "Ký tự S (student) và theo sau là số có 3 chữ số. Nhập lại");
             }
         } while (true);
         //Input name:
-        System.out.println("Nhập tên sinh viên: ");
-        String name = scanner.nextLine();
-        //Input birthdate and check:
+        String name;
+        do {
+            try {
+                System.out.println("Nhập tên sinh viên: ");
+                name = scanner.nextLine();
+                if (name.trim().isEmpty()) {
+                    throw new RuntimeException("Không được để trống");
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Không được để trống dữ liệu");
+            }
+        } while (true);
+
+        //Input birthdate:
         String birthdate;
         do {
             try {
                 System.out.println("Nhập ngày sinh của sinh viên: ");
                 birthdate = scanner.nextLine();
-                if (!studentManagementRepository.checkDateFormat(birthdate)) {
-                    throw new RuntimeException();
+                if (!studentManagementRepository.checkDateFormat(birthdate) || birthdate.trim().isEmpty()) {
+                    throw new RuntimeException("Nhập sai định dạng ngày");
                 }
                 break;
             } catch (RuntimeException runtimeException) {
@@ -91,13 +103,13 @@ public class StudentManagementService implements IStudentManagementService {
             }
         } while (true);
 
-        //Input class name:
+        //Input classname:
         String className;
         do {
             try {
                 System.out.println("Nhập lớp của sinh viên");
                 className = scanner.nextLine();
-                if (!studentManagementRepository.checkClassNameFormat(className)) {
+                if (!studentManagementRepository.checkClassNameFormat(className) || className.trim().isEmpty()) {
                     throw new RuntimeException();
                 }
                 break;
@@ -115,7 +127,7 @@ public class StudentManagementService implements IStudentManagementService {
                     System.out.println("Nhập điểm của sinh viên: ");
                     score = Float.parseFloat(scanner.nextLine());
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println("Nhập sai định dạng điểm");
+                    System.out.println("Nhập sai định dạng điểm.Nhập lại");
                     continue;
                 }
                 if (score < 0 || score > 10) {
@@ -135,22 +147,93 @@ public class StudentManagementService implements IStudentManagementService {
 
     @Override
     public void addTeacher() {
-        System.out.println("Nhập mã giảng viên: ");
-        String id = scanner.nextLine();
-        System.out.println("Nhập tên giảng viên: ");
-        String name = scanner.nextLine();
-        System.out.println("Nhập ngày sinh của giảng viên: ");
-        String birthdate = scanner.nextLine();
-        System.out.println("Nhập giới tính của giảng viên: 1. Nam/ 2. Nữ");
-        int genderOption = Integer.parseInt(scanner.nextLine());
+        //Input id:
+        String id;
+        do {
+            try {
+                System.out.println("Nhập mã giảng viên: ");
+                id = scanner.nextLine();
+                if (!studentManagementRepository.checkIdTeacherFormat(id) || id.trim().isEmpty()) {
+                    throw new RuntimeException("Mã giảng viên sai định dạng");
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Mã giảng viên phải theo định dạng: \n" +
+                        "Ký tự T (teacher) và theo sau là số có 3 chữ số. Nhập lại");
+            }
+        } while (true);
+
+        //Input name:
+        String name;
+        do {
+            try {
+                System.out.println("Nhập tên giảng viên: ");
+                name = scanner.nextLine();
+                if (name.trim().isEmpty()) {
+                    throw new RuntimeException("Không được để trống");
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Không được để trống");
+            }
+        } while (true);
+
+        //Input date:
+        String birthdate;
+        do {
+            try {
+                System.out.println("Nhập ngày sinh của giảng viên: ");
+                birthdate = scanner.nextLine();
+                if (!studentManagementRepository.checkDateFormat(birthdate) || birthdate.trim().isEmpty()) {
+                    throw new RuntimeException("Nhập sai định dạng ngày");
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Ngày phải theo định dạng dd/mm/yyyy. Vui lòng nhập lại");
+            }
+        } while (true);
+
+        //Input gender:
+        int genderOption;
         boolean gender;
-        if (genderOption == 1) {
-            gender = true;
-        } else {
-            gender = false;
-        }
-        System.out.println("Nhập chuyên môn của giảng viên: ");
-        String subject = scanner.nextLine();
+        do {
+            try {
+                System.out.println("Nhập giới tính của giảng viên: 1. Nam/ 2. Nữ");
+                try {
+                    genderOption = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException numberFormatException) {
+                    System.out.println("Nhập sai định dạng số");
+                    continue;
+                }
+                if (genderOption == 1) {
+                    gender = true;
+                } else if (genderOption == 2) {
+                    gender = false;
+                } else {
+                    throw new GenderOptionException();
+                }
+                break;
+            } catch (GenderOptionException genderOptionException) {
+                System.out.println("Chỉ được nhập số 1 hoặc số 2. Nhập lại: ");
+            }
+        } while (true);
+
+        //Input subject:
+        String subject;
+        do {
+            try {
+                System.out.println("Nhập chuyên môn của giảng viên: ");
+                subject = scanner.nextLine();
+                if (subject.trim().isEmpty()) {
+                    throw new RuntimeException("Không được để trống");
+                }
+                break;
+            } catch (RuntimeException runtimeException) {
+                System.out.println("Không được để trống");
+            }
+        } while (true);
+
+        //Creat new teacher:
         Person person = new Teacher(id, name, birthdate, gender, subject);
         studentManagementRepository.addPerson(person);
         System.out.println("Bạn đã thêm mới thành công");

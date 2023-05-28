@@ -105,8 +105,20 @@ public class StudentManagementRepository implements IStudentManagementRepository
     }
 
     @Override
-    public boolean checkIdFormat(String id) {
-        String pattern = "^[ST]\\d{3}$";
+    public boolean checkIdStudentFormat(String id) {
+        String pattern = "^S\\d{3}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(id);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkIdTeacherFormat(String id) {
+        String pattern = "^T\\d{3}$";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(id);
         if (matcher.matches()) {
