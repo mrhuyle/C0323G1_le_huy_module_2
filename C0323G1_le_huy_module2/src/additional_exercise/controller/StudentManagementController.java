@@ -27,7 +27,7 @@ public class StudentManagementController {
                     try {
                         int option = Integer.parseInt(scanner.nextLine());
                         if (option < 1 || option > 4) {
-                            throw new DataFormatException();
+                            throw new CustomException();
                         }
                         switch (option) {
                             case 1:
@@ -43,10 +43,10 @@ public class StudentManagementController {
                                 System.out.println("Bạn đã nhấn thoát chương trình");
                                 System.exit(0);
                         }
+                    } catch (CustomException e) {
+                        System.out.println("Bạn chỉ được nhập số từ 1 đến 4. Nhập lại: ");
                     } catch (NumberFormatException numberFormatException) {
-                        System.out.println("Bạn chỉ được nhập số từ 1 - 4. Vui lòng nhập lại");
-                    } catch (DataFormatException e) {
-                        System.out.println();
+                        System.out.println("Khác định dạng số. Nhập lại ");
                     }
             } while (true);
 

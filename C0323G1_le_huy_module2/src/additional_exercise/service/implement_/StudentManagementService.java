@@ -1,10 +1,12 @@
 package additional_exercise.service.implement_;
 
+import additional_exercise.controller.CustomException;
 import additional_exercise.model.Person;
 import additional_exercise.model.Student;
 import additional_exercise.model.Teacher;
 import additional_exercise.repository.implement_.StudentManagementRepository;
 import additional_exercise.repository.interface_.IStudentManagementRepository;
+import additional_exercise.service.exception.GenderOptionException;
 import additional_exercise.service.interface_.IStudentManagementService;
 
 import java.util.List;
@@ -63,14 +65,31 @@ public class StudentManagementService implements IStudentManagementService {
                 System.out.println("Ngày phải theo định dạng dd/mm/yyyy. Vui lòng nhập lại");
             }
         } while (true);
-        System.out.println("Nhập giới tính của sinh viên: 1. Nam/ 2. Nữ");
-        int genderOption = Integer.parseInt(scanner.nextLine());
+
+        //Input gender:
+        int genderOption;
         boolean gender;
-        if (genderOption == 1) {
-            gender = true;
-        } else {
-            gender = false;
-        }
+        do {
+            try {
+                System.out.println("Nhập giới tính của sinh viên: 1. Nam/ 2. Nữ");
+                try {
+                    genderOption = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException numberFormatException) {
+                    System.out.println("Nhập sai định dạng số");
+                    continue;
+                }
+                if (genderOption == 1) {
+                    gender = true;
+                } else if (genderOption == 2) {
+                    gender = false;
+                } else {
+                    throw new GenderOptionException();
+                }
+                break;
+            } catch (GenderOptionException genderOptionException) {
+                System.out.println("Chỉ được nhập số 1 hoặc số 2. Nhập lại: ");
+            }
+        } while (true);
         System.out.println("Nhập lớp của sinh viên: ");
         String className = scanner.nextLine();
         System.out.println("Nhập điểm của sinh viên: ");
