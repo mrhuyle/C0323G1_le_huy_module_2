@@ -10,11 +10,6 @@ public interface IStudentManagementRepository {
     void addPerson(Person person);
     void deletePerson(Person person);
     Person getPersonById(String id);
-    static List<Person> readFileCsv(String filePath) {
-        List<Person> list = new ArrayList<>();
-        return list;
-    }
-    void writeFileCsv(String filePath);
     void getInfor();
     boolean checkIdStudentFormat(String id);
     boolean checkIdTeacherFormat(String id);

@@ -44,7 +44,6 @@ public class StudentManagementService implements IStudentManagementService {
                 System.out.println("Chỉ được nhập số 1 hoặc số 2. Nhập lại:");
             }
         } while (true);
-        studentManagementRepository.writeFileCsv("src/additional_exercise/repository/person.csv");
     }
 
     @Override
@@ -288,6 +287,5 @@ public class StudentManagementService implements IStudentManagementService {
         } else {
             System.out.println("Bạn đã chọn không xóa");
         }
-        studentManagementRepository.writeFileCsv("src/additional_exercise/repository/person.csv");
     }
 }
