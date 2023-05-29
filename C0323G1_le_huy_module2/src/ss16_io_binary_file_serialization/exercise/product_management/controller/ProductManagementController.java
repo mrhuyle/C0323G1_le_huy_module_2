@@ -10,29 +10,32 @@ public class ProductManagementController {
     private static IProductMangementService productMangementService = new ProductManagementService();
 
     public static void showMenu() {
-        //Menu information:
-        System.out.println("Please choose following options: \n" +
-                "1. Add product\n" +
-                "2. Display products list\n" +
-                "3. Search product\n" +
-                "4. Exit\n" +
-                "Input option: ");
+        do {
+            //Menu information:
+            System.out.println("----------------MENU----------------");
+            System.out.println("Please choose following options: \n" +
+                    "1. Add product\n" +
+                    "2. Display products list\n" +
+                    "3. Search product\n" +
+                    "4. Exit\n" +
+                    "Input option: ");
 
-        //Input option:
-        int option = Integer.parseInt(scanner.nextLine());
-        switch (option) {
-            case 1:
-//                productMangementService.addProduct();
-                break;
-            case 2:
-                productMangementService.displayProduct();
-                break;
-            case 3:
-//                productMangementService.searchProduct();
-                break;
-            case 4:
-                System.out.println("***You had exited the program***");
-                System.exit(0);
-        }
+            //Input option:
+            int option = Integer.parseInt(scanner.nextLine());
+            switch (option) {
+                case 1:
+                    productMangementService.addProduct();
+                    break;
+                case 2:
+                    productMangementService.displayProductList();
+                    break;
+                case 3:
+                    productMangementService.searchProduct();
+                    break;
+                case 4:
+                    System.out.println("***You had exited the program***");
+                    System.exit(0);
+            }
+        } while (true);
     }
 }

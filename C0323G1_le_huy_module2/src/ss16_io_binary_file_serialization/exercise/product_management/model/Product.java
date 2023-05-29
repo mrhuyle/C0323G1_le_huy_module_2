@@ -1,6 +1,9 @@
 package ss16_io_binary_file_serialization.exercise.product_management.model;
 
-public class Product {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Product implements Serializable {
     private String id;
     private String name;
     private int price;
@@ -67,5 +70,18 @@ public class Product {
                 ", brand='" + brand + '\'' +
                 ", details='" + details + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
