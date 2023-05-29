@@ -41,6 +41,7 @@ public class StudentManagementRepository implements IStudentManagementRepository
 
     @Override
     public Person getPersonById(String id) {
+        personList = ReadWriteFileCsv.readFileCsv();
         for (Person person : personList) {
             if (person.getId().equals(id)) {
                 return person;
@@ -50,6 +51,7 @@ public class StudentManagementRepository implements IStudentManagementRepository
     }
 
     public void getInfor() {
+        personList = ReadWriteFileCsv.readFileCsv();
         for (Person person : personList) {
             System.out.println(person.getInfo());
         }
@@ -105,6 +107,7 @@ public class StudentManagementRepository implements IStudentManagementRepository
 
     @Override
     public boolean checkIdDuplicate(String id) {
+        personList = ReadWriteFileCsv.readFileCsv();
         for (Person person : personList) {
             if (person.getId().equals(id)) {
                 return false;
