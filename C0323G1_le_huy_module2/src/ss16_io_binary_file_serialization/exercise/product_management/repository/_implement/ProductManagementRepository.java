@@ -18,7 +18,7 @@ public class ProductManagementRepository implements IProductMangementRepository 
 
     @Override
     public void addProduct(Product newProduct) {
-        productList = getAllProduct();
+        productList = readDataFromFile("src/ss16_io_binary_file_serialization/exercise/product_management/data/data.txt");
         productList.add(newProduct);
         writeDataToFile("src/ss16_io_binary_file_serialization/exercise/product_management/data/data.txt", productList);
     }

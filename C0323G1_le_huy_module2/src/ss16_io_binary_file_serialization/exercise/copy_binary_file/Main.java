@@ -1,4 +1,5 @@
-package ss16_io_binary_file_serialization.practice;
+package ss16_io_binary_file_serialization.exercise.copy_binary_file;
+
 
 import java.io.*;
 import java.nio.file.Files;
@@ -7,18 +8,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.printf("Enter source file: ");
-        String sourcePath = in.nextLine();
+        String sourcePath = scanner.nextLine();
         System.out.printf("Enter destination file: ");
-        String destPath = in.nextLine();
+        String destPath = scanner.nextLine();
 
         File sourceFile = new File(sourcePath);
         File destFile = new File(destPath);
 
         try {
-            copyFileUsingJava7Files(sourceFile,destFile);
+            copyFileUsingJava7Files(sourceFile, destFile);
             System.out.printf("Copy Completed");
         } catch (IOException e) {
             System.out.printf("Can't copy that file ");
@@ -48,3 +49,4 @@ public class Main {
         }
     }
 }
+
