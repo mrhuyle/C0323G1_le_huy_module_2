@@ -11,16 +11,29 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.printf("Enter source file: ");
+//        src/ss16_io_binary_file_serialization/exercise/copy_binary_file/data.txt
         String sourcePath = scanner.nextLine();
         System.out.printf("Enter destination file: ");
+//        src/ss16_io_binary_file_serialization/exercise/copy_binary_file/dataCopy.txt
         String destPath = scanner.nextLine();
 
-        File sourceFile = new File(sourcePath);
-        File destFile = new File(destPath);
-
         try {
-            copyFileUsingJava7Files(sourceFile, destFile);
+            File sourceFile = new File(sourcePath);
+            if (!sourceFile.exists()) {
+               throw new FileNotFoundException();
+            }
+            File destFile = new File(destPath);
+            if (destFile.exists()) {
+                throw new RuntimeException();
+            }
+//            copyFileUsingJava7Files(sourceFile, destFile);
+            copyFileUsingStream(sourceFile,destFile);
             System.out.printf("Copy Completed");
+            System.out.println(". The available bytes in file is: " + destFile.length());
+        } catch (FileNotFoundException fileNotFoundException) {
+            System.out.println("File source do not exist. Error");
+        } catch (RuntimeException runtimeException) {
+            System.out.println("File destination had existed. Error");
         } catch (IOException e) {
             System.out.printf("Can't copy that file ");
             System.out.println(e.getMessage());
