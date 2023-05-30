@@ -10,8 +10,4 @@ public interface IProductMangementRepository {
     void addProduct(Product newProduct);
 
     List<Product> getProductBySearchString(String string);
-
-    List<Product> readDataFromFile(String filePath);
-
-    void writeDataToFile(String filePath, List<Product> productList);
 }

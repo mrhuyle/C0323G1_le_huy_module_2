@@ -1,4 +1,4 @@
-package ss16_io_binary_file_serialization.exercise.product_management.controller;
+package ss16_io_binary_file_serialization.exercise.product_management.common;
 
 
 import java.io.*;
