@@ -1,5 +1,6 @@
 package additional_exercise.service.implement_;
 
+import additional_exercise.common.ReadWriteFileCsv;
 import additional_exercise.model.Person;
 import additional_exercise.model.Student;
 import additional_exercise.model.Teacher;
@@ -12,6 +13,8 @@ import additional_exercise.untils.InputScoreException;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentManagementService implements IStudentManagementService {
     private IStudentManagementRepository studentManagementRepository = new StudentManagementRepository();
@@ -54,10 +57,10 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập mã sinh viên: ");
                 id = scanner.nextLine();
-                if (!studentManagementRepository.checkIdDuplicate(id)) {
+                if (!checkIdDuplicate(id)) {
                     throw new DuplicateDataException();
                 }
-                if (!studentManagementRepository.checkIdStudentFormat(id) || id.trim().isEmpty()) {
+                if (!checkIdStudentFormat(id) || id.trim().isEmpty()) {
                     throw new RuntimeException();
                 }
                 break;
@@ -89,7 +92,7 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập ngày sinh của sinh viên: ");
                 birthdate = scanner.nextLine();
-                if (!studentManagementRepository.checkDateFormat(birthdate) || birthdate.trim().isEmpty()) {
+                if (!checkDateFormat(birthdate) || birthdate.trim().isEmpty()) {
                     throw new RuntimeException("Nhập sai định dạng ngày");
                 }
                 break;
@@ -129,7 +132,7 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập lớp của sinh viên");
                 className = scanner.nextLine();
-                if (!studentManagementRepository.checkClassNameFormat(className) || className.trim().isEmpty()) {
+                if (!checkClassNameFormat(className) || className.trim().isEmpty()) {
                     throw new RuntimeException();
                 }
                 break;
@@ -173,10 +176,10 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập mã giảng viên: ");
                 id = scanner.nextLine();
-                if (!studentManagementRepository.checkIdTeacherFormat(id) || id.trim().isEmpty()) {
+                if (!checkIdTeacherFormat(id) || id.trim().isEmpty()) {
                     throw new RuntimeException("Mã giảng viên sai định dạng");
                 }
-                if (!studentManagementRepository.checkIdDuplicate(id)) {
+                if (!checkIdDuplicate(id)) {
                     throw new DuplicateDataException();
                 }
                 break;
@@ -209,7 +212,7 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập ngày sinh của giảng viên: ");
                 birthdate = scanner.nextLine();
-                if (!studentManagementRepository.checkDateFormat(birthdate) || birthdate.trim().isEmpty()) {
+                if (!checkDateFormat(birthdate) || birthdate.trim().isEmpty()) {
                     throw new RuntimeException("Nhập sai định dạng ngày");
                 }
                 break;
@@ -286,6 +289,64 @@ public class StudentManagementService implements IStudentManagementService {
             System.out.println("Bạn đã xoá thành công id " + id);
         } else {
             System.out.println("Bạn đã chọn không xóa");
+        }
+    }
+
+    @Override
+    public boolean checkDateFormat(String date) {
+        String pattern = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(date);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkClassNameFormat(String className) {
+        String pattern = "^[CA]\\d{2}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(className);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkIdDuplicate(String id) {
+        List<Person> personList = ReadWriteFileCsv.readFileCsv();
+        for (Person person : personList) {
+            if (person.getId().equals(id)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkIdStudentFormat(String id) {
+        String pattern = "^S\\d{3}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(id);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkIdTeacherFormat(String id) {
+        String pattern = "^T\\d{3}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(id);
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

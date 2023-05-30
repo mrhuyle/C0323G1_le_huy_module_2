@@ -11,10 +11,4 @@ public interface IStudentManagementRepository {
     void deletePerson(Person person);
     Person getPersonById(String id);
     void getInfor();
-    boolean checkIdStudentFormat(String id);
-    boolean checkIdTeacherFormat(String id);
-    boolean checkDateFormat(String date);
-    boolean checkClassNameFormat (String className);
-
-    boolean checkIdDuplicate(String id);
 }

@@ -6,4 +6,9 @@ public interface IStudentManagementService {
     void addTeacher();
     void displayAll();
     void deleteStudentTeacher();
+    boolean checkDateFormat(String date);
+    boolean checkClassNameFormat(String className);
+    boolean checkIdDuplicate(String id);
+    boolean checkIdStudentFormat(String id);
+    boolean checkIdTeacherFormat(String id);
 }
