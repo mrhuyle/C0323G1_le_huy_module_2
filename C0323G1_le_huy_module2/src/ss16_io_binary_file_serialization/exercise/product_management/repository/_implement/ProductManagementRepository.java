@@ -42,7 +42,7 @@ public class ProductManagementRepository implements IProductMangementRepository 
         List<Product> products = new ArrayList<>();
         try {
             FileInputStream fileInputStream = new FileInputStream(filePath);
-            ObjectInputStream objectInputStream = new ObjectInputStream((fileInputStream));
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             products = (List<Product>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
