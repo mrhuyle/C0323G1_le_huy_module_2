@@ -6,8 +6,6 @@ import additional_exercise.repository.interface_.IStudentManagementRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class StudentManagementRepository implements IStudentManagementRepository {
     private static List<Person> personList = new ArrayList<>();

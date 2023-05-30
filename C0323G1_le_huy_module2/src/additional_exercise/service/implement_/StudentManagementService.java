@@ -77,6 +77,10 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập tên sinh viên: ");
                 name = scanner.nextLine();
+                if (name.length() < 3 || name.length() > 100) {
+                    System.out.println("Độ dài chuỗi tên phải lớn hơn 3 ký tự và nhỏ 100 ký tự");
+                    continue;
+                }
                 if (name.trim().isEmpty()) {
                     throw new RuntimeException("Không được để trống");
                 }
@@ -197,6 +201,10 @@ public class StudentManagementService implements IStudentManagementService {
             try {
                 System.out.println("Nhập tên giảng viên: ");
                 name = scanner.nextLine();
+                if (name.length() < 3 || name.length() > 100) {
+                    System.out.println("Độ dài chuỗi tên phải lớn hơn 3 ký tự và nhỏ 100 ký tự");
+                    continue;
+                }
                 if (name.trim().isEmpty()) {
                     throw new RuntimeException("Không được để trống");
                 }
@@ -277,18 +285,47 @@ public class StudentManagementService implements IStudentManagementService {
 
     @Override
     public void deleteStudentTeacher() {
-        System.out.println("Nhập mã sinh viên/giảng viên muốn xoá: ");
-        String id = scanner.nextLine();
-        System.out.println("Bạn có muốn xoá sinh viên/giảng viên có id " + id + ". Vui lòng chọn số: ");
-        System.out.println("1. Có");
-        System.out.println("2. Không");
-        int option = Integer.parseInt(scanner.nextLine());
-        if (option == 1) {
-            Person person = studentManagementRepository.getPersonById(id);
-            studentManagementRepository.deletePerson(person);
-            System.out.println("Bạn đã xoá thành công id " + id);
+        //Input id to delete:
+        String id;
+        do {
+            try {
+                System.out.println("Nhập mã sinh viên/giảng viên muốn xoá: ");
+                id = scanner.nextLine();
+                if (!checkIdStudentFormat(id) && !checkIdTeacherFormat(id)) {
+                    throw new RuntimeException("Error");
+                }
+                break;
+            } catch (RuntimeException e) {
+                System.out.println("Nhập sai định dạng id (S/T và số có ba chữ số). Nhập lại");
+            }
+        } while (true);
+
+        if (!checkIdDuplicate(id)) {
+            System.out.println("Bạn có muốn xoá sinh viên/giảng viên có id " + id + ". Vui lòng chọn số: ");
+            System.out.println("1. Có");
+            System.out.println("2. Không");
+            int option;
+            do {
+                try {
+                    option = Integer.parseInt(scanner.nextLine());
+                    if (option == 1) {
+                        Person person = studentManagementRepository.getPersonById(id);
+                        studentManagementRepository.deletePerson(person);
+                        System.out.println("Bạn đã xoá thành công id " + id);
+                    } else if (option == 2) {
+                        System.out.println("Bạn đã chọn không xóa");
+                    } else {
+                        throw new GenderOptionException();
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Nhập sai định dạng số. Nhập lại");
+                } catch (GenderOptionException e) {
+                    System.out.println("Chỉ được nhập 1 hoặc 2");
+                }
+            } while (true);
         } else {
-            System.out.println("Bạn đã chọn không xóa");
+            System.out.println("ID muốn xoá không tồn tại trong danh sách hiện có");
         }
     }
 
