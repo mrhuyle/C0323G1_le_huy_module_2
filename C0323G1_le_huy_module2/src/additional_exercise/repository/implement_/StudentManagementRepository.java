@@ -2,17 +2,32 @@ package additional_exercise.repository.implement_;
 
 import additional_exercise.common.ReadWriteFileCsv;
 import additional_exercise.model.Person;
+import additional_exercise.model.Student;
+import additional_exercise.model.Teacher;
 import additional_exercise.repository.interface_.IStudentManagementRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManagementRepository implements IStudentManagementRepository {
+    private static final String PERSON_PATH = "src/additional_exercise/data/person.csv";
     private static List<Person> personList = new ArrayList<>();
 
     @Override
     public List<Person> getAll() {
-        personList = ReadWriteFileCsv.readFileCsv();
+        List<String> stringsFromFile = new ArrayList<>();
+        stringsFromFile = ReadWriteFileCsv.readFileCsvToString(PERSON_PATH);
+        personList.clear();
+        for (String dataLine: stringsFromFile) {
+            String [] personData = dataLine.split(",");
+            if (personData[0].charAt(0) == 'S') {
+                Person newStudent = new Student(personData[0],personData[1],personData[2],Boolean.parseBoolean(personData[3]),personData[4],Float.parseFloat(personData[5]));
+                personList.add(newStudent);
+            } else if (personData[0].charAt(0) == 'T') {
+                Person newTeacher = new Teacher(personData[0],personData[1],personData[2],Boolean.parseBoolean(personData[3]),personData[4]);
+                personList.add(newTeacher);
+            }
+        }
         return personList;
     }
 
@@ -21,7 +36,6 @@ public class StudentManagementRepository implements IStudentManagementRepository
         personList = ReadWriteFileCsv.readFileCsv();
         personList.add(person);
         ReadWriteFileCsv.writeFileCsv(personList);
-
     }
 
     @Override

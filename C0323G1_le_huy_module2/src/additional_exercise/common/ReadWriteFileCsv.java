@@ -9,7 +9,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadWriteFileCsv {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list = ReadWriteFileCsv.readFileCsvToString("src/additional_exercise/data/person.csv");
+        for (String str : list) {
+            System.out.println(str);
+        }
+    }
+
     public static final String FILE_PATH = "src/additional_exercise/data/person.csv";
+
+    public static List<String> readFileCsvToString(String filePath) {
+        List<String> stringsFromFile = new ArrayList<>();
+        try {
+            FileReader fileReader = new FileReader(filePath);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                stringsFromFile.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("không tìm thấy file");
+        } catch (IOException e) {
+            System.out.println("Lỗi đọc file");
+        }
+        return stringsFromFile;
+    }
+
     public static List<Person> readFileCsv() {
         List<Person> newPersonList = new ArrayList<>();
         try {
@@ -49,7 +75,7 @@ public class ReadWriteFileCsv {
             }
             FileWriter fileWriter = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (Person person: personList) {
+            for (Person person : personList) {
                 bufferedWriter.write(person.getInfo());
                 bufferedWriter.newLine();
             }
