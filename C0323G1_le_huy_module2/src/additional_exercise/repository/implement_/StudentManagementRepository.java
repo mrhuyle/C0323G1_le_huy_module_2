@@ -33,21 +33,21 @@ public class StudentManagementRepository implements IStudentManagementRepository
 
     @Override
     public void addPerson(Person person) {
-        personList = ReadWriteFileCsv.readFileCsv();
+        personList = getAll();
         personList.add(person);
         ReadWriteFileCsv.writeFileCsv(personList);
     }
 
     @Override
     public void deletePerson(Person person) {
-        personList = ReadWriteFileCsv.readFileCsv();
+        personList = getAll();
         personList.remove(person);
         ReadWriteFileCsv.writeFileCsv(personList);
     }
 
     @Override
     public Person getPersonById(String id) {
-        personList = ReadWriteFileCsv.readFileCsv();
+        personList = getAll();
         for (Person person : personList) {
             if (person.getId().equals(id)) {
                 return person;
@@ -57,7 +57,7 @@ public class StudentManagementRepository implements IStudentManagementRepository
     }
 
     public void getInfor() {
-        personList = ReadWriteFileCsv.readFileCsv();
+        personList = getAll();
         for (Person person : personList) {
             System.out.println(person.getInfo());
         }
