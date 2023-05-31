@@ -23,7 +23,6 @@ public class FacilityController {
                     case 3:
                         break;
                     case 4:
-                        FuramaController.displayMainMenu();
                         break;
                 }
             } catch (NumberFormatException e) {

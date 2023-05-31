@@ -2,7 +2,7 @@ package case_study.furama_resort.controller;
 
 import java.util.Scanner;
 
-public class FuramaController {
+public class MainMenuController {
     private static final Scanner scanner = new Scanner(System.in);
     public static void displayMainMenu() {
         do {
