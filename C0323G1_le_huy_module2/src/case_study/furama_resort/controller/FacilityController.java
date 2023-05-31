@@ -27,6 +27,8 @@ public class FacilityController {
                 }
             } catch (NumberFormatException e) {
                 System.err.println("Error. Invalid option. Option must be 1-4");
+            } catch (Exception e) {
+                System.err.println("System error");
             }
         } while (true);
     }

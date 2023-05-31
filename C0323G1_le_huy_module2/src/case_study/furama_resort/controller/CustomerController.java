@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class CustomerController {
     private static final Scanner scanner = new Scanner(System.in);
-    public static void displayMenu () {
+
+    public static void displayMenu() {
         do {
             try {
                 System.out.println("*** Customer Management Menu ***\n" +
@@ -28,6 +29,8 @@ public class CustomerController {
                 }
             } catch (NumberFormatException e) {
                 System.err.println("Error. Invalid option. Option must be 1-4");
+            } catch (Exception e) {
+                System.err.println("System error");
             }
         } while (true);
 

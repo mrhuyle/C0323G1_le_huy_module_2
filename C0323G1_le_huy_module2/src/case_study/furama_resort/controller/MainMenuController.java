@@ -39,6 +39,8 @@ public class MainMenuController {
                 }
             } catch (NumberFormatException e) {
                 System.err.println("Error. Invalid option. Option must be 1-6");
+            } catch (Exception e) {
+                System.err.println("System error");
             }
 
         } while (true);
