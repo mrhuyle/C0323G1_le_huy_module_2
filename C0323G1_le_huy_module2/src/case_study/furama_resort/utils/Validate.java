@@ -12,8 +12,12 @@ public class Validate {
     }
 
     public static final String EMPLOYEE_CODE_REGEX = "^NV-\\d{4}$";
-    public static final String EMPLOYEE_NAME_REGEX = "^([A-Z][a-z]+)(\\s[A-Z]|(\\s[A-Z][a-z]+)+)$";
+    public static final String EMPLOYEE_NAME_REGEX = "^([A-Z][a-z]+|[A-Z])(\\s[A-Z]|(\\s[A-Z][a-z]+)+)$";
     public static final String DATE_REGEX = "^[1-2][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[1-2])$";
+    public static final String ID_REGEX = "^([0-9]{9}||[0-9]{12})$";
+    public static final String PHONE_REGEX = "^0\\d{9}$";
+    public static final String EMAIL_REGEX = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
+
 
     public static boolean validateEmployeeCode(String code) {
         Pattern pattern = Pattern.compile(EMPLOYEE_CODE_REGEX);
@@ -45,5 +49,26 @@ public class Validate {
         } else {
             return false;
         }
+    }
+
+    public static boolean validateID(String id) {
+        Pattern pattern = Pattern.compile(ID_REGEX);
+        Matcher matcher = pattern.matcher(id);
+        boolean result = matcher.matches();
+        return result;
+    }
+
+    public static boolean validatePhoneNumber(String phoneNumber) {
+        Pattern pattern = Pattern.compile(PHONE_REGEX);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        boolean result = matcher.matches();
+        return result;
+    }
+
+    public static boolean validateEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        boolean result = matcher.matches();
+        return result;
     }
 }

@@ -7,6 +7,7 @@ import case_study.furama_resort.service.interface_.IEmployeeService;
 import case_study.furama_resort.utils.Validate;
 
 import javax.swing.plaf.IconUIResource;
+import java.nio.channels.ScatteringByteChannel;
 import java.util.List;
 import java.util.Scanner;
 
@@ -87,5 +88,117 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (true);
 
+        //Input id number:
+        String id;
+        do {
+            System.out.println("Input ID number (number 9 digits or number 12 digits): ");
+            id = scanner.nextLine();
+            if (!Validate.validateID(id) || id.trim().isEmpty()) {
+                System.err.println("Invalid ID (number 9 digits or number 12 digits)");
+                continue;
+            }
+            break;
+        } while (true);
+
+        //Input employee phone number:
+        String phoneNumber;
+        do {
+            System.out.println("Input employee phone number (start with 0 and follow by 9 digits number): ");
+            phoneNumber = scanner.nextLine();
+            if (!Validate.validatePhoneNumber(phoneNumber)) {
+                System.err.println("Invalid phone number (start with 0 and follow by 9 digits number)");
+                continue;
+            }
+            break;
+        } while (true);
+
+        //Input employee mail:
+        String email;
+        do {
+            System.out.println("Input employee email: ");
+            email = scanner.nextLine();
+            if (!Validate.validateEmail(email)) {
+                System.err.println("Invalid email");
+                continue;
+            }
+            break;
+        } while (true);
+
+        //Input employee academic level:
+        String academicLevel;
+        do {
+            System.out.println("Choose employee academic level: 1. Intermediate || 2. College || 3. Bachelor || 4. Postgraduated");
+            try {
+                int option = Integer.parseInt(scanner.nextLine());
+                switch (option) {
+                    case 1:
+                        academicLevel = "Intermediate";
+                        break;
+                    case 2:
+                        academicLevel = "College";
+                        break;
+                    case 3:
+                        academicLevel = "Bachelor";
+                        break;
+                    case 4:
+                        academicLevel = "Postgraduated";
+                        break;
+                    default:
+                        throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Option must be 1 to 4");
+            }
+        } while (true);
+
+        //Input employee position:
+        String position;
+        do {
+            System.out.println("Choose employee academic level: 1. receptionist || 2. waiter/waitress || 3. specialist || 4. supervisor || 5. manager || 6. director");
+            try {
+                int option = Integer.parseInt(scanner.nextLine());
+                switch (option) {
+                    case 1:
+                        position = "receptionist";
+                        break;
+                    case 2:
+                        position = "waiter/waitress";
+                        break;
+                    case 3:
+                        position = "specialist";
+                        break;
+                    case 4:
+                        position = "supervisor";
+                        break;
+                    case 5:
+                        position = "manager";
+                        break;
+                    case 6:
+                        position = "director";
+                        break;
+                    default:
+                        throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Option must be 1 to 6");
+            }
+        } while (true);
+
+        //Input employee salary:
+        float salary;
+        do {
+            try {
+                System.out.println("Input employee salary: ");
+                salary = Float.parseFloat(scanner.nextLine());
+                if (salary<0) {
+                    throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid salary (wrong number format or salary < 0)");
+            }
+        } while (true);
     }
 }

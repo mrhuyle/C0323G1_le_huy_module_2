@@ -83,7 +83,7 @@ public abstract class Person {
         return "code= " + code +
                 ", name= " + name +
                 ", birthdate= " + birthdate +
-                ", gender= " + gender +
+                ", gender= " + (gender ? "Male" : "Female") +
                 ", id= " + id +
                 ", phoneNumber= " + phoneNumber +
                 ", email= " + email;
