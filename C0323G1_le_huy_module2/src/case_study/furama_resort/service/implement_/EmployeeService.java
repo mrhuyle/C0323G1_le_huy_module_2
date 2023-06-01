@@ -62,6 +62,7 @@ public class EmployeeService implements IEmployeeService {
                 System.err.println("Invalid date format");
                 continue;
             } else if (!Validate.validateAge(birthdate)) {
+                System.err.println("The age under 18");
                 continue;
             }
             break;
