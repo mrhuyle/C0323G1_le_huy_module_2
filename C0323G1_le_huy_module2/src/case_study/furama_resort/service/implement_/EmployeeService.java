@@ -68,5 +68,24 @@ public class EmployeeService implements IEmployeeService {
             break;
         } while (true);
 
+        //Input employee gender:
+        boolean gender;
+        do {
+            System.out.println("Input employee gender: 1. Male || 2. Female");
+            try {
+                int option = Integer.parseInt(scanner.nextLine());
+                if (option == 1) {
+                    gender = true;
+                } else if (option == 2) {
+                    gender = false;
+                } else {
+                    throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Input option must be 1 or 2");
+            }
+        } while (true);
+
     }
 }
