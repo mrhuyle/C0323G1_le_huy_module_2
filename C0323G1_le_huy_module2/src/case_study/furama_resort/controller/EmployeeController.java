@@ -27,6 +27,7 @@ public class EmployeeController {
                         employeeService.add();
                         break;
                     case 3:
+                        employeeService.edit();
                         break;
                     case 4:
                         break;
@@ -35,7 +36,6 @@ public class EmployeeController {
                 }
             } catch (NumberFormatException e) {
                 System.err.println("Error. Invalid option. Option must be 1-4");
-                e.printStackTrace();
             } catch (Exception e) {
                 System.err.println("System error");
             }

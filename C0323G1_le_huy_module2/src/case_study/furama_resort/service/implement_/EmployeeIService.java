@@ -191,7 +191,7 @@ public class EmployeeIService implements IEmployeeIService {
             try {
                 System.out.println("Input employee salary: ");
                 salary = Float.parseFloat(scanner.nextLine());
-                if (salary<0) {
+                if (salary < 0) {
                     throw new NumberFormatException();
                 }
                 break;
@@ -201,7 +201,33 @@ public class EmployeeIService implements IEmployeeIService {
         } while (true);
 
         //Create new employee:
-        Employee newEmployee = new Employee(code,name,birthdate,gender,id,phoneNumber,email,academicLevel,position,salary);
-        employeeRepository.add(newEmployee);
+        Employee newEmployee = new Employee(code, name, birthdate, gender, id, phoneNumber, email, academicLevel, position, salary);
+
+        //Confirm:
+        System.out.println("Do you wan to add new employee with this infomation below: ");
+        System.out.println(newEmployee.toString());
+        int option;
+        do {
+            try {
+                System.out.println("1. Confirm || 2.Cancel");
+                option = Integer.parseInt(scanner.nextLine());
+                if (option == 1) {
+                    System.out.println("Added successful");
+                    employeeRepository.add(newEmployee);
+                } else if (option == 2) {
+                    System.out.println("You chose to cancel ");
+                } else {
+                    throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid option. Must be 1 or 2.");
+            }
+        } while (true);
+    }
+
+    @Override
+    public void edit() {
+
     }
 }

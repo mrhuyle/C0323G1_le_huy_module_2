@@ -33,7 +33,7 @@ public class ReadWriteFile {
 
     public static void writeFile(String path, List<String> stringlist, boolean append) {
         try {
-            FileWriter fileWriter = new FileWriter(path);
+            FileWriter fileWriter = new FileWriter(path,append);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for(String str: stringlist) {
                 bufferedWriter.write(str);

@@ -5,4 +5,6 @@ public interface IEmployeeIService extends IService {
     default void displayList() {
     }
     void add();
+
+    void edit();
 }

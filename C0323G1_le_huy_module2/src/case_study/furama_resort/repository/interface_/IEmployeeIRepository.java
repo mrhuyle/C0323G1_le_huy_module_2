@@ -7,5 +7,9 @@ import java.util.List;
 public interface IEmployeeIRepository extends IRepository<Employee> {
     @Override
     List<Employee> getAll();
-    void add(Employee employee);
+
+    @Override
+    default void add(Employee employee) {
+
+    }
 }
