@@ -21,6 +21,7 @@ public class EmployeeController {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
+                        employeeService.displayList();
                         break;
                     case 2:
                         break;
