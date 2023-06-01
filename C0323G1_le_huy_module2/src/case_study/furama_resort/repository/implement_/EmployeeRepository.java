@@ -23,4 +23,9 @@ public class EmployeeRepository implements IEmployeeRepository {
         }
         return employeeList;
     }
+
+    @Override
+    public void add(Employee employee) {
+
+    }
 }

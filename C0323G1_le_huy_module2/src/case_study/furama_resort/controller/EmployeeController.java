@@ -24,6 +24,7 @@ public class EmployeeController {
                         employeeService.displayList();
                         break;
                     case 2:
+                        employeeService.add();
                         break;
                     case 3:
                         break;
