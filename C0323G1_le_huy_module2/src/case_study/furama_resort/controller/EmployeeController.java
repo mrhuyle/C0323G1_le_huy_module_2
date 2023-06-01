@@ -1,9 +1,13 @@
 package case_study.furama_resort.controller;
 
+import case_study.furama_resort.service.implement_.EmployeeService;
+import case_study.furama_resort.service.interface_.IEmployeeService;
+
 import java.util.Scanner;
 
 public class EmployeeController {
     private static final Scanner scanner = new Scanner(System.in);
+    private static IEmployeeService employeeService = new EmployeeService();
 
     public static void displayMenu() {
         do {
