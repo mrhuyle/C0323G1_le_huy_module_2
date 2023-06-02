@@ -1,7 +1,6 @@
 package case_study.furama_resort.service.implement_;
 
 import case_study.furama_resort.model.Employee;
-import case_study.furama_resort.model.Person;
 import case_study.furama_resort.repository.implement_.EmployeeIRepository;
 import case_study.furama_resort.repository.interface_.IEmployeeIRepository;
 import case_study.furama_resort.service.interface_.IEmployeeIService;
@@ -228,6 +227,147 @@ public class EmployeeIService implements IEmployeeIService {
 
     @Override
     public void edit() {
+        //Input employee code and check code exist:
+        System.out.println("Input employee code that you want to edit: ");
+        String codeToEdit;
+        do {
+            codeToEdit = scanner.nextLine();
+            if (!Validate.validateEmployeeCode(codeToEdit)) {
+                System.err.println("Invalid employee code (must follow a form NV-YYYY, with YYYY - a number has 4 digits");
+                continue;
+            }
+            if (!findCode(codeToEdit)) {
+                System.err.println("Do not find the employee with this code.Input again");
+                continue;
+            }
+            break;
+        } while (true);
 
+        //Edit steps
+        System.out.println("Choose the data field you want to edit: ");
+        System.out.println("1. Code || 2. Name || 3. Birthdate || 4. Gender || 5. ID number || 6. Phone || 7. Email || 8. Academic level || 9. Position || 10. Salary");
+        int option;
+        Employee duplicateEmployee = cloneEmployeeByCode(codeToEdit);
+        String editInfo = "";
+        do {
+            try {
+                option = Integer.parseInt(scanner.nextLine());
+                switch (option) {
+                    case 1:
+                        String newCode;
+                        do {
+                            System.out.println("Input new employee code to edit: ");
+                            newCode = scanner.nextLine();
+                            if (!Validate.validateEmployeeCode(newCode)) {
+                                System.err.println("Invalid employee code (must follow a form NV-YYYY, with YYYY - a number has 4 digits");
+                                continue;
+                            }
+                            editInfo = "Code: " + newCode;
+                            duplicateEmployee.setCode(newCode);
+                            break;
+                        } while (true);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
+                    default:
+                        throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid option. Must be 1 to 10.");
+            }
+        } while (true);
+        employeeRepository.delete(getEmployeeByCode(codeToEdit));
+        employeeRepository.add(duplicateEmployee);
     }
+
+    @Override
+    public void delete() {
+        //Input employee code and check before delete:
+        System.out.println("Input employee code to delete: ");
+        String codeToDelete;
+        do {
+            codeToDelete = scanner.nextLine();
+            if (!Validate.validateEmployeeCode(codeToDelete)) {
+                System.err.println("Invalid employee code (must follow a form NV-YYYY, with YYYY - a number has 4 digits");
+                continue;
+            }
+            if (!findCode(codeToDelete)) {
+                System.err.println("Do not find the employee with this code.Input again");
+                continue;
+            }
+            break;
+        } while (true);
+
+        //Confirm and delete:
+        System.out.println("Do you want to delete the employee with code: " + codeToDelete);
+        int option;
+        do {
+            try {
+                System.out.println("1. Confirm || 2.Cancel");
+                option = Integer.parseInt(scanner.nextLine());
+                if (option == 1) {
+                    System.out.println("Delete successful");
+                    employeeRepository.delete(getEmployeeByCode(codeToDelete));
+                } else if (option == 2) {
+                    System.out.println("You chose to cancel ");
+                } else {
+                    throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid option. Must be 1 or 2.");
+            }
+        } while (true);
+    }
+
+    //CheckCode: check the employee code is exist, return boolean
+    public boolean findCode(String code) {
+        List<Employee> employeeList = employeeRepository.getAll();
+        for (Employee employee : employeeList) {
+            if (employee.getCode().equals(code)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //getEmployeeByCode: make a duplicate new employee with same properties with employee existed (by code).
+    public Employee cloneEmployeeByCode(String code) {
+        List<Employee> employeeList = employeeRepository.getAll();
+        Employee duplicateEmployee = new Employee();
+        for (Employee employee : employeeList) {
+            if (employee.getCode().equals(code)) {
+                duplicateEmployee = new Employee(employee.getCode(), employee.getName(), employee.getBirthdate(), employee.isGender(), employee.getId(), employee.getPhoneNumber(), employee.getEmail(), employee.getAcademicLevel(), employee.getPosition(), employee.getSalary());
+            }
+        }
+        return duplicateEmployee;
+    }
+
+    public Employee getEmployeeByCode(String code) {
+        List<Employee> employeeList = employeeRepository.getAll();
+        for (Employee employee : employeeList) {
+            if (employee.getCode().equals(code)) {
+                return employee;
+            }
+        }
+        return null;
+    }
+
 }

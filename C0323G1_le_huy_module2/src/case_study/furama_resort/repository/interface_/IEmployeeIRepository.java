@@ -12,4 +12,9 @@ public interface IEmployeeIRepository extends IRepository<Employee> {
     default void add(Employee employee) {
 
     }
+
+    @Override
+    default void delete(Employee T) {
+
+    }
 }

@@ -16,7 +16,9 @@ public class EmployeeController {
                         "1. Display list employees\n" +
                         "2. Add new employee \n" +
                         "3. Edit employee\n" +
-                        "4. Return main menu");
+                        "4. Delete employee\n" +
+                        "5. Search employee\n" +
+                        "6. Return main menu");
                 System.out.println("Input option: ");
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
@@ -30,6 +32,12 @@ public class EmployeeController {
                         employeeService.edit();
                         break;
                     case 4:
+                        employeeService.delete();
+                        break;
+                    case 5:
+
+                        break;
+                    case 6:
                         break;
                     default:
                         throw new NumberFormatException();

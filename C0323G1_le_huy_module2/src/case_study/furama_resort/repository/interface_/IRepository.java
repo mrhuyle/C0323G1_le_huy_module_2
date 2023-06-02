@@ -6,4 +6,5 @@ public interface IRepository<T> {
     List<T> getAll();
 
     void add(T T);
+    void delete(T T);
 }

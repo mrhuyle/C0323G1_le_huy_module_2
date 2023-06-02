@@ -7,12 +7,17 @@ import java.util.List;
 
 public class BookingIRepository implements IBookingIRepository {
     @Override
-    public List getAll() {
-        return null;
+    public List<Booking> getAll() {
+        return IBookingIRepository.super.getAll();
     }
 
     @Override
-    public void add(Object T) {
+    public void add(Booking T) {
+        IBookingIRepository.super.add(T);
+    }
 
+    @Override
+    public void delete(Booking T) {
+        IBookingIRepository.super.delete(T);
     }
 }

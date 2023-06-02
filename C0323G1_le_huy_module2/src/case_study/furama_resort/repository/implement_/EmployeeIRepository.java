@@ -34,6 +34,17 @@ public class EmployeeIRepository implements IEmployeeIRepository {
         ReadWriteFile.writeFile(EMPLOYEE_PATH, newLine, true);
     }
 
+    @Override
+    public void delete(Employee employee) {
+        employeeList = getAll();
+        employeeList.remove(employee);
+        List<String> stringList = new ArrayList<>();
+        for (Employee e: employeeList) {
+            stringList.add(getInfo(e));
+        }
+        ReadWriteFile.writeFile(EMPLOYEE_PATH, stringList, false);
+    }
+
     public String getInfo(Employee employee) {
         String infoStr = "";
         infoStr += employee.getCode() + "," + employee.getName() + "," + employee.getBirthdate() + "," + employee.isGender() + "," + employee.getId() + "," + employee.getPhoneNumber() + "," + employee.getEmail() + "," + employee.getAcademicLevel() + "," + employee.getPosition() + "," + employee.getSalary();
