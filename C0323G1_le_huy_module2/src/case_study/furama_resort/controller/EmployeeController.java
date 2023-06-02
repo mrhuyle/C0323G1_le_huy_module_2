@@ -1,13 +1,13 @@
 package case_study.furama_resort.controller;
 
-import case_study.furama_resort.service.implement_.EmployeeIService;
-import case_study.furama_resort.service.interface_.IEmployeeIService;
+import case_study.furama_resort.service.implement_.EmployeeService;
+import case_study.furama_resort.service.interface_.IEmployeeService;
 
 import java.util.Scanner;
 
 public class EmployeeController {
     private static final Scanner scanner = new Scanner(System.in);
-    private static IEmployeeIService employeeService = new EmployeeIService();
+    private static IEmployeeService employeeService = new EmployeeService();
 
     public static void displayMenu() {
         do {
@@ -43,7 +43,7 @@ public class EmployeeController {
                         throw new NumberFormatException();
                 }
             } catch (NumberFormatException e) {
-                System.err.println("Error. Invalid option. Option must be 1-4");
+                System.err.println("Error. Invalid option. Option must be 1-6");
             } catch (Exception e) {
                 System.err.println("System error");
             }
