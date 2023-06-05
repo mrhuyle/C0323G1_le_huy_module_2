@@ -17,6 +17,7 @@ public class Validate {
     public static final String ID_REGEX = "^([0-9]{9}||[0-9]{12})$";
     public static final String PHONE_REGEX = "^0\\d{9}$";
     public static final String EMAIL_REGEX = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
+    public static final String CUSTOMER_CODE_REGEX = "^KH-\\d{4}$";
 
 
     public static boolean validateEmployeeCode(String code) {
@@ -26,7 +27,7 @@ public class Validate {
         return result;
     }
 
-    public static boolean validateEmployeeName(String name) {
+    public static boolean validateName(String name) {
         Pattern pattern = Pattern.compile(EMPLOYEE_NAME_REGEX);
         Matcher matcher = pattern.matcher(name);
         boolean result = matcher.matches();
@@ -68,6 +69,13 @@ public class Validate {
     public static boolean validateEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(email);
+        boolean result = matcher.matches();
+        return result;
+    }
+
+    public static boolean validateCustomerCode(String code) {
+        Pattern pattern = Pattern.compile(CUSTOMER_CODE_REGEX);
+        Matcher matcher = pattern.matcher(code);
         boolean result = matcher.matches();
         return result;
     }

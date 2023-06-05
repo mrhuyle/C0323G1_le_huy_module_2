@@ -23,7 +23,6 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void add() {
-//        NV-0002,Louis,20/06/1989,true,123456789112,0905169777,louis@gmail.com,postgraduated,employee,700
         //Input employee code:
         String code;
         do {
@@ -31,6 +30,10 @@ public class EmployeeService implements IEmployeeService {
             code = scanner.nextLine();
             if (!Validate.validateEmployeeCode(code)) {
                 System.err.println("Invalid employee code (must follow a form NV-YYYY, with YYYY - a number has 4 digits");
+                continue;
+            }
+            if (findCode(code)) {
+                System.err.println("The employee code had exist.Input another code.");
                 continue;
             }
             break;
@@ -41,11 +44,11 @@ public class EmployeeService implements IEmployeeService {
         do {
             System.out.println("Input employee name: ");
             name = scanner.nextLine();
-            if (name.length() < 3) {
-                System.err.println("Too short input");
+            if (name.length() < 3 || name.length()>100) {
+                System.err.println("Too short/long input name");
                 continue;
             }
-            if (!Validate.validateEmployeeName(name)) {
+            if (!Validate.validateName(name)) {
                 System.err.println("Invalid employee name (must follow: UpperCase at the beginning of each word)");
                 continue;
             }
@@ -146,7 +149,7 @@ public class EmployeeService implements IEmployeeService {
                 }
                 break;
             } catch (NumberFormatException e) {
-                System.err.println("Option must be 1 to 4");
+                System.err.println("Invalid option. Option must be 1 to 4");
             }
         } while (true);
 
@@ -272,7 +275,7 @@ public class EmployeeService implements IEmployeeService {
                         do{
                             System.out.println("Input new employee name to edit: ");
                             name = scanner.nextLine();
-                            if (!Validate.validateEmployeeName(name)) {
+                            if (!Validate.validateName(name)) {
                                 System.err.println("Invalid employee name (must follow: UpperCase at the beginning of each word)");
                                 continue;
                             }

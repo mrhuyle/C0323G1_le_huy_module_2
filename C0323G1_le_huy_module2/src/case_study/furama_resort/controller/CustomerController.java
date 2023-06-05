@@ -23,9 +23,10 @@ public class CustomerController {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
-
+                        customerService.displayList();
                         break;
                     case 2:
+                        customerService.add();
                         break;
                     case 3:
                         break;
