@@ -427,7 +427,18 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void searchByName() {
-
+        System.out.println("Input search string (related to name): ");
+        String searchStr;
+        searchStr = scanner.nextLine();
+        List<Customer> searchList = customerRepository.searchByName(searchStr);
+        if (searchList.isEmpty()) {
+            System.out.println("Do not find any customer with a search string: " + searchStr);
+        } else {
+            System.out.println("The list of employees related to a search string: " + searchStr);
+            for (Customer customer : searchList) {
+                System.out.println(customer);
+            }
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package case_study.furama_resort.repository.implement_;
 
 import case_study.furama_resort.common.ReadWriteFile;
 import case_study.furama_resort.model.Customer;
+import case_study.furama_resort.model.Employee;
 import case_study.furama_resort.repository.interface_.ICustomerRepository;
 
 import java.util.ArrayList;
@@ -47,5 +48,17 @@ public class CustomerRepository implements ICustomerRepository {
             stringList.add(getInfo(c));
         }
         ReadWriteFile.writeFile(CUSTOMER_PATH,stringList,false);
+    }
+
+    @Override
+    public List<Customer> searchByName(String searchStr) {
+        List<Customer> searchList = new ArrayList<>();
+        customerList = getAll();
+        for (Customer customer: customerList) {
+            if (customer.getName().toLowerCase().contains(searchStr.toLowerCase())) {
+                searchList.add(customer);
+            }
+        }
+        return searchList;
     }
 }

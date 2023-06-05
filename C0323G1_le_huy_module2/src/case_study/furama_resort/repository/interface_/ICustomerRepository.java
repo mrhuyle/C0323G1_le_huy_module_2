@@ -20,4 +20,6 @@ public interface ICustomerRepository extends IRepository<Customer> {
     }
 
     String getInfo(Customer customer);
+
+    List<Customer> searchByName(String searchStr);
 }
