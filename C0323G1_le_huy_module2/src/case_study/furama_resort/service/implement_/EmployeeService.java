@@ -268,22 +268,181 @@ public class EmployeeService implements IEmployeeService {
                         } while (true);
                         break;
                     case 2:
+                        String name;
+                        do{
+                            System.out.println("Input new employee name to edit: ");
+                            name = scanner.nextLine();
+                            if (!Validate.validateEmployeeName(name)) {
+                                System.err.println("Invalid employee name (must follow: UpperCase at the beginning of each word)");
+                                continue;
+                            }
+                            editInfo = "Name: " + name;
+                            duplicateEmployee.setName(name);
+                            break;
+                        } while (true);
                         break;
                     case 3:
+                        String birthdate;
+                        do {
+                            System.out.println("Input new employee birthdate to edit: ");
+                            birthdate = scanner.nextLine();
+                            if (!Validate.validateDate(birthdate)) {
+                                System.err.println("Invalid date format");
+                                continue;
+                            } else if (!Validate.validateAge(birthdate)) {
+                                System.err.println("The age under 18");
+                                continue;
+                            }
+                            editInfo = "Birthdate: " + birthdate;
+                            duplicateEmployee.setBirthdate(birthdate);
+                            break;
+                        } while (true);
                         break;
                     case 4:
+                        boolean gender;
+                        do {
+                            System.out.println("Input employee gender: 1. Male || 2. Female");
+                            try {
+                                int optionGender = Integer.parseInt(scanner.nextLine());
+                                if (optionGender == 1) {
+                                    gender = true;
+                                } else if (optionGender == 2) {
+                                    gender = false;
+                                } else {
+                                    throw new NumberFormatException();
+                                }
+                                editInfo = "Gender: " + gender;
+                                duplicateEmployee.setGender(gender);
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("Input option must be 1 or 2");
+                            }
+                        } while (true);
                         break;
                     case 5:
+                        String id;
+                        do {
+                            System.out.println("Input ID number (number 9 digits or number 12 digits): ");
+                            id = scanner.nextLine();
+                            if (!Validate.validateID(id) || id.trim().isEmpty()) {
+                                System.err.println("Invalid ID (number 9 digits or number 12 digits)");
+                                continue;
+                            }
+                            editInfo = "ID number: " + id;
+                            duplicateEmployee.setId(id);
+                            break;
+                        } while (true);
                         break;
                     case 6:
+                        String phoneNumber;
+                        do {
+                            System.out.println("Input employee phone number (start with 0 and follow by 9 digits number): ");
+                            phoneNumber = scanner.nextLine();
+                            if (!Validate.validatePhoneNumber(phoneNumber)) {
+                                System.err.println("Invalid phone number (start with 0 and follow by 9 digits number)");
+                                continue;
+                            }
+                            editInfo = "Phone number: " + phoneNumber;
+                            duplicateEmployee.setPhoneNumber(phoneNumber);
+                            break;
+                        } while (true);
                         break;
                     case 7:
+                        String email;
+                        do {
+                            System.out.println("Input employee email: ");
+                            email = scanner.nextLine();
+                            if (!Validate.validateEmail(email)) {
+                                System.err.println("Invalid email");
+                                continue;
+                            }
+                            editInfo = "Email: " + email;
+                            duplicateEmployee.setEmail(email);
+                            break;
+                        } while (true);
                         break;
                     case 8:
+                        String academicLevel;
+                        do {
+                            System.out.println("Choose employee academic level: 1. Intermediate || 2. College || 3. Bachelor || 4. Postgraduated");
+                            try {
+                                int optionAcademicLevel = Integer.parseInt(scanner.nextLine());
+                                switch (optionAcademicLevel) {
+                                    case 1:
+                                        academicLevel = "Intermediate";
+                                        break;
+                                    case 2:
+                                        academicLevel = "College";
+                                        break;
+                                    case 3:
+                                        academicLevel = "Bachelor";
+                                        break;
+                                    case 4:
+                                        academicLevel = "Postgraduated";
+                                        break;
+                                    default:
+                                        throw new NumberFormatException();
+                                }
+                                editInfo = "Academic Level: " + academicLevel;
+                                duplicateEmployee.setAcademicLevel(academicLevel);
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("Option must be 1 to 4");
+                            }
+                        } while (true);
                         break;
                     case 9:
+                        String position;
+                        do {
+                            System.out.println("Choose employee academic level: 1. receptionist || 2. waiter/waitress || 3. specialist || 4. supervisor || 5. manager || 6. director");
+                            try {
+                                int optionPosition = Integer.parseInt(scanner.nextLine());
+                                switch (optionPosition) {
+                                    case 1:
+                                        position = "receptionist";
+                                        break;
+                                    case 2:
+                                        position = "waiter/waitress";
+                                        break;
+                                    case 3:
+                                        position = "specialist";
+                                        break;
+                                    case 4:
+                                        position = "supervisor";
+                                        break;
+                                    case 5:
+                                        position = "manager";
+                                        break;
+                                    case 6:
+                                        position = "director";
+                                        break;
+                                    default:
+                                        throw new NumberFormatException();
+                                }
+                                editInfo = "Position: " + position;
+                                duplicateEmployee.setPosition(position);
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("Option must be 1 to 6");
+                            }
+                        } while (true);
                         break;
                     case 10:
+                        float salary;
+                        do {
+                            try {
+                                System.out.println("Input employee salary: ");
+                                salary = Float.parseFloat(scanner.nextLine());
+                                if (salary < 0) {
+                                    throw new NumberFormatException();
+                                }
+                                editInfo = "Salary: " + salary;
+                                duplicateEmployee.setSalary(salary);
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.err.println("Invalid salary (wrong number format or salary < 0)");
+                            }
+                        } while (true);
                         break;
                     default:
                         throw new NumberFormatException();
@@ -293,8 +452,28 @@ public class EmployeeService implements IEmployeeService {
                 System.err.println("Invalid option. Must be 1 to 10.");
             }
         } while (true);
-        employeeRepository.delete(getEmployeeByCode(codeToEdit));
-        employeeRepository.add(duplicateEmployee);
+
+        //Confirm and edit:
+        System.out.println("Do you want to edit the employee: Employee Code: " + codeToEdit + ", new data: " +editInfo);
+        int choice;
+        do {
+            try {
+                System.out.println("1. Confirm || 2.Cancel");
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice == 1) {
+                    System.out.println("Edit successful");
+                    employeeRepository.delete(getEmployeeByCode(codeToEdit));
+                    employeeRepository.add(duplicateEmployee);
+                } else if (choice == 2) {
+                    System.out.println("You chose to cancel ");
+                } else {
+                    throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid option. Must be 1 or 2.");
+            }
+        } while (true);
     }
 
     @Override
