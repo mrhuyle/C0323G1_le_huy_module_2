@@ -17,4 +17,6 @@ public interface IEmployeeService extends IService {
     boolean findCode(String code);
 
     Employee cloneByCode(String code);
+
+    Employee getEmployeeByCode(String code);
 }

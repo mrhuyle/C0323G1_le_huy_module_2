@@ -16,8 +16,7 @@ public interface ICustomerRepository extends IRepository<Customer> {
     }
 
     @Override
-    default void delete(Customer T) {
-
+    default void delete(Customer customer) {
     }
 
     String getInfo(Customer customer);

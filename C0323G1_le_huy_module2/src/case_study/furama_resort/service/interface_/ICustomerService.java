@@ -1,5 +1,6 @@
 package case_study.furama_resort.service.interface_;
 
+import case_study.furama_resort.model.Customer;
 import case_study.furama_resort.model.Employee;
 
 public interface ICustomerService extends IService {
@@ -16,5 +17,9 @@ public interface ICustomerService extends IService {
 
     boolean findCode(String code);
 
-    Employee cloneByCode(String code);
+    Customer cloneByCode(String code);
+
+    Customer getByCode(String code);
+
+
 }

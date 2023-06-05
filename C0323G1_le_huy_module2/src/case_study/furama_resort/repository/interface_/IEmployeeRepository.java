@@ -14,7 +14,7 @@ public interface IEmployeeRepository extends IRepository<Employee> {
     }
 
     @Override
-    default void delete(Employee T) {
+    default void delete(Employee employee) {
 
     }
 

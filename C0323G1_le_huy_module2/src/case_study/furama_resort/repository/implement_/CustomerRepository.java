@@ -37,4 +37,15 @@ public class CustomerRepository implements ICustomerRepository {
         String stringInfo = customer.getCode() + "," + customer.getName() + "," + customer.getBirthdate() + "," + customer.isGender() + "," + customer.getId() + "," + customer.getPhoneNumber() + "," + customer.getEmail() + "," + customer.getType() + "," + customer.getAddress();
         return stringInfo;
     }
+
+    @Override
+    public void delete(Customer customer) {
+        customerList = getAll();
+        customerList.remove(customer);
+        List<String> stringList = new ArrayList<>();
+        for (Customer c: customerList) {
+            stringList.add(getInfo(c));
+        }
+        ReadWriteFile.writeFile(CUSTOMER_PATH,stringList,false);
+    }
 }

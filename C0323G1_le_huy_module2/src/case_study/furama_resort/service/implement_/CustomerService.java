@@ -173,7 +173,42 @@ public class CustomerService implements ICustomerService {
     }
     @Override
     public void delete() {
+        //Input employee code and check before delete:
+        System.out.println("Input customer code to delete: ");
+        String codeToDelete;
+        do {
+            codeToDelete = scanner.nextLine();
+            if (!Validate.validateEmployeeCode(codeToDelete)) {
+                System.err.println("Invalid customer code (must follow a form KH-YYYY, with YYYY - a number has 4 digits");
+                continue;
+            }
+            if (!findCode(codeToDelete)) {
+                System.err.println("Do not find the employee with this code.Input again");
+                continue;
+            }
+            break;
+        } while (true);
 
+        //Confirm and delete:
+        System.out.println("Do you want to delete the customer with code: " + codeToDelete);
+        int option;
+        do {
+            try {
+                System.out.println("1. Confirm || 2.Cancel");
+                option = Integer.parseInt(scanner.nextLine());
+                if (option == 1) {
+                    System.out.println("Delete successful");
+                    customerRepository.delete(getByCode(codeToDelete));
+                } else if (option == 2) {
+                    System.out.println("You chose to cancel ");
+                } else {
+                    throw new NumberFormatException();
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid option. Must be 1 or 2.");
+            }
+        } while (true);
     }
 
     @Override
@@ -188,12 +223,28 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public boolean findCode(String code) {
-
+        List<Customer> customerList = customerRepository.getAll();
+        for (Customer customer: customerList) {
+            if (customer.getCode().equals(code)) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public Employee cloneByCode(String code) {
+    public Customer cloneByCode(String code) {
+        return null;
+    }
+
+    @Override
+    public Customer getByCode(String code) {
+        List<Customer> customerList = customerRepository.getAll();
+        for (Customer customer: customerList) {
+            if(customer.getCode().equals(code)) {
+                return customer;
+            }
+        }
         return null;
     }
 }
