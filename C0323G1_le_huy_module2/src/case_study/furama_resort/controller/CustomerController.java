@@ -29,10 +29,13 @@ public class CustomerController {
                         customerService.add();
                         break;
                     case 3:
+                        customerService.edit();
                         break;
                     case 4:
+                        customerService.delete();
                         break;
                     case 5:
+
                         break;
                     case 6:
                         MainMenuController.displayMainMenu();
