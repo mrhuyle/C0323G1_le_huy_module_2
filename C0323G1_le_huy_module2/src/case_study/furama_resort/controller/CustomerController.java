@@ -35,7 +35,7 @@ public class CustomerController {
                         customerService.delete();
                         break;
                     case 5:
-
+                        customerService.searchByName();
                         break;
                     case 6:
                         MainMenuController.displayMainMenu();
