@@ -247,7 +247,7 @@ public class EmployeeService implements IEmployeeService {
         System.out.println("Choose the data field you want to edit: ");
         System.out.println("1. Code || 2. Name || 3. Birthdate || 4. Gender || 5. ID number || 6. Phone || 7. Email || 8. Academic level || 9. Position || 10. Salary");
         int option;
-        Employee duplicateEmployee = cloneEmployeeByCode(codeToEdit);
+        Employee duplicateEmployee = cloneByCode(codeToEdit);
         String editInfo = "";
         do {
             try {
@@ -544,7 +544,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     //getEmployeeByCode: make a duplicate new employee with same properties with employee existed (by code).
-    public Employee cloneEmployeeByCode(String code) {
+    public Employee cloneByCode(String code) {
         List<Employee> employeeList = employeeRepository.getAll();
         Employee duplicateEmployee = new Employee();
         for (Employee employee : employeeList) {
