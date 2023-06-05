@@ -45,6 +45,18 @@ public class EmployeeRepository implements IEmployeeRepository {
         ReadWriteFile.writeFile(EMPLOYEE_PATH, stringList, false);
     }
 
+    @Override
+    public List<Employee> searchByName(String searchStr) {
+        List<Employee> searchList = new ArrayList<>();
+        employeeList = getAll();
+        for (Employee employee: employeeList) {
+            if (employee.getName().toLowerCase().contains(searchStr.toLowerCase())) {
+                searchList.add(employee);
+            }
+        }
+        return searchList;
+    }
+
     public String getInfo(Employee employee) {
         String infoStr = "";
         infoStr += employee.getCode() + "," + employee.getName() + "," + employee.getBirthdate() + "," + employee.isGender() + "," + employee.getId() + "," + employee.getPhoneNumber() + "," + employee.getEmail() + "," + employee.getAcademicLevel() + "," + employee.getPosition() + "," + employee.getSalary();

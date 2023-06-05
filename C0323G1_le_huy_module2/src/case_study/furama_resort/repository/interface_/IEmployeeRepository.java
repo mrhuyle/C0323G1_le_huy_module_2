@@ -17,4 +17,6 @@ public interface IEmployeeRepository extends IRepository<Employee> {
     default void delete(Employee T) {
 
     }
+
+    List<Employee> searchByName(String searchStr);
 }

@@ -17,7 +17,7 @@ public class EmployeeController {
                         "2. Add new employee \n" +
                         "3. Edit employee\n" +
                         "4. Delete employee\n" +
-                        "5. Search employee\n" +
+                        "5. Search by name employee\n" +
                         "6. Return main menu");
                 System.out.println("Input option: ");
                 int option = Integer.parseInt(scanner.nextLine());
@@ -35,6 +35,7 @@ public class EmployeeController {
                         employeeService.delete();
                         break;
                     case 5:
+                        employeeService.searchByName();
                         break;
                     case 6:
                         MainMenuController.displayMainMenu();

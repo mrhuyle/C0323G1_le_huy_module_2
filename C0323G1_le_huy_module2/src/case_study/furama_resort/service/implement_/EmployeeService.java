@@ -477,6 +477,22 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
+    public void searchByName() {
+        System.out.println("Input search string (related to name): ");
+        String searchStr;
+        searchStr = scanner.nextLine();
+        List<Employee> searchList = employeeRepository.searchByName(searchStr);
+        if (searchList.isEmpty()) {
+            System.out.println("Do not find any employee with a search string: " + searchStr);
+        } else {
+            System.out.println("The list of employees related to a search string: " + searchStr);
+            for (Employee empployee: searchList) {
+                System.out.println(empployee);
+            }
+        }
+    }
+
+    @Override
     public void delete() {
         //Input employee code and check before delete:
         System.out.println("Input employee code to delete: ");

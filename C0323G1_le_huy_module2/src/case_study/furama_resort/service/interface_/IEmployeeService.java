@@ -6,10 +6,13 @@ public interface IEmployeeService extends IService {
     @Override
     default void displayList() {
     }
+
     void add();
+
     void delete();
 
     void edit();
+    void searchByName();
 
     boolean findCode(String code);
 
