@@ -1,5 +1,7 @@
 package case_study.furama_resort.model;
 
+import java.util.Objects;
+
 public abstract class Facility {
     private String code; //code of service
     private String name; // name of service
@@ -66,5 +68,28 @@ public abstract class Facility {
 
     public void setRentalType(String rentalType) {
         this.rentalType = rentalType;
+    }
+
+    @Override
+    public String toString() {
+        return  " code= " + code +
+                ", name = " + name +
+                ", area = " + area +
+                ", fee = $ " + fee +
+                ", occupancy = " + occupancy +
+                ", rentalType = " + rentalType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Facility facility = (Facility) o;
+        return Objects.equals(code, facility.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code);
     }
 }

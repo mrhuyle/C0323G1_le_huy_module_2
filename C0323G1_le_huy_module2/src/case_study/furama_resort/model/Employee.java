@@ -44,7 +44,7 @@ public class Employee extends Person {
         return "*** Employee: " + super.toString()
                 + ", academicLevel= " + academicLevel
                 + ", postion= " + position
-                + ", salary= " + salary;
+                + ", salary = $ " + salary;
     }
 
     @Override
