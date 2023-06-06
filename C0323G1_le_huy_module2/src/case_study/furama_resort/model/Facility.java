@@ -72,9 +72,9 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return  " code= " + code +
+        return  "code = " + code +
                 ", name = " + name +
-                ", area = " + area +
+                ", area = " + area + " m2" +
                 ", fee = $ " + fee +
                 ", occupancy = " + occupancy +
                 ", rentalType = " + rentalType;

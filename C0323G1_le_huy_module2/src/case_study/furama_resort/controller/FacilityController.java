@@ -24,7 +24,7 @@ public class FacilityController {
                         facilityService.displayList();
                         break;
                     case 2:
-                        displaySubMenu();
+                        facilityService.add();
                         break;
                     case 3:
                         break;
