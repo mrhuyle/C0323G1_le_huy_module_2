@@ -41,7 +41,7 @@ public class Villa extends Facility {
         return ">>> Villa: " +
                 super.toString() +
                 ", standard = " + standard +
-                ", poolArea = " + poolArea +
-                ", numberOfFloors = " + numberOfFloors;
+                ", poolArea = " + poolArea +" m2" +
+                ", numberOfFloors = " + numberOfFloors + " floors";
     }
 }

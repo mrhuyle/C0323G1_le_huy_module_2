@@ -31,6 +31,6 @@ public class House extends Facility {
         return ">>> House: " +
                 super.toString() +
                 ", standard = " + standard +
-                ", numberofFloors = " + numberofFloors;
+                ", numberofFloors = " + numberofFloors + " floors";
     }
 }

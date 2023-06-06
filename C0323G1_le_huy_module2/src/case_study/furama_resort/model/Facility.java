@@ -76,7 +76,7 @@ public abstract class Facility {
                 ", name = " + name +
                 ", area = " + area + " m2" +
                 ", fee = $ " + fee +
-                ", occupancy = " + occupancy +
+                ", occupancy = " + occupancy + " people" +
                 ", rentalType = " + rentalType;
     }
 
