@@ -8,8 +8,6 @@ import case_study.furama_resort.repository.implement_.FacilityRepository;
 import case_study.furama_resort.repository.interface_.IFacilityRepository;
 import case_study.furama_resort.service.interface_.IFacilityService;
 import case_study.furama_resort.utils.Validate;
-import com.sun.beans.editors.IntegerEditor;
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation;
 
 import java.util.*;
 
@@ -115,10 +113,10 @@ public class FacilityService implements IFacilityService {
                     default:
                         throw new NumberFormatException();
                 }
+                break;
             } catch (NumberFormatException e) {
                 System.err.println("Invalid option. Must be 1 - 4.Input again.");
             }
-            break;
         } while (true);
 
 
@@ -164,7 +162,6 @@ public class FacilityService implements IFacilityService {
                 } catch (NumberFormatException e) {
                     System.err.println("Invalid option. Must be 1 - 3.Input again.");
                 }
-                break;
             } while (true);
             //Input VILLA/HOUSE number of floors:
             int numberOfFloors;
@@ -215,7 +212,7 @@ public class FacilityService implements IFacilityService {
                 continue;
             }
             if (getFacilityByCode(code) == null) {
-                System.err.println("Do not find the facility with this code: ");
+                System.err.println("Do not find the facility with this code. Try again.");
                 continue;
             }
             break;

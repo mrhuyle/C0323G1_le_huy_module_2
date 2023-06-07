@@ -26,6 +26,7 @@ public class BookingController {
                         bookingService.add();
                         break;
                     case 2:
+                        bookingService.displayList();
                         break;
                     case 3:
                         break;
@@ -42,6 +43,7 @@ public class BookingController {
                 System.err.println("Error. Invalid option. Option must be 1-6");
             } catch (Exception e) {
                 System.err.println("System error");
+                e.printStackTrace();
             }
         } while (true);
     }

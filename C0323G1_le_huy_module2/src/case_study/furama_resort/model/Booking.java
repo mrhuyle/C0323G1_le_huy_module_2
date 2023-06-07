@@ -1,23 +1,25 @@
 package case_study.furama_resort.model;
 
+import java.util.Objects;
+
 public class Booking {
     private String code;
     private String dateBook;
     private String beginDateRent;
     private String endDateRent;
-    private String customerCode;
-    private String facilityCode;
+    private Customer customer;
+    private Facility facility;
 
     public Booking() {
     }
 
-    public Booking(String code, String dateBook, String beginDateRent, String endDateRent, String customerCode, String facilityCode) {
+    public Booking(String code, String dateBook, String beginDateRent, String endDateRent, Customer customer, Facility facility) {
         this.code = code;
         this.dateBook = dateBook;
         this.beginDateRent = beginDateRent;
         this.endDateRent = endDateRent;
-        this.customerCode = customerCode;
-        this.facilityCode = facilityCode;
+        this.customer = customer;
+        this.facility = facility;
     }
 
     public String getCode() {
@@ -52,19 +54,43 @@ public class Booking {
         this.endDateRent = endDateRent;
     }
 
-    public String getCustomerCode() {
-        return customerCode;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getFacilityCode() {
-        return facilityCode;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public void setFacilityCode(String facilityCode) {
-        this.facilityCode = facilityCode;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return Objects.equals(code, booking.code) && Objects.equals(dateBook, booking.dateBook) && Objects.equals(beginDateRent, booking.beginDateRent) && Objects.equals(endDateRent, booking.endDateRent) && Objects.equals(customer, booking.customer) && Objects.equals(facility, booking.facility);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, dateBook, beginDateRent, endDateRent, customer, facility);
+    }
+
+    @Override
+    public String toString() {
+        return ">>> Booking:" +
+                " code = " + code +
+                ", dateBook = " + dateBook +
+                ", beginDateRent = " + beginDateRent +
+                ", endDateRent = " + endDateRent +
+                ", customerCode = " + customer.getCode() +
+                ", facilityCode = " + facility.getCode();
     }
 }

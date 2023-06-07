@@ -3,20 +3,12 @@ package case_study.furama_resort.repository.interface_;
 import case_study.furama_resort.model.Booking;
 
 import java.util.List;
+import java.util.TreeSet;
 
-public interface IBookingRepository extends IRepository <Booking> {
-    @Override
-    default List<Booking> getAll() {
-        return null;
-    }
+public interface IBookingRepository{
+    TreeSet<Booking> getAll();
 
-    @Override
-    default void add(Booking T) {
+    void add(Booking booking);
 
-    }
-
-    @Override
-    default void delete(Booking T) {
-
-    }
+    String getInfo(Booking booking);
 }

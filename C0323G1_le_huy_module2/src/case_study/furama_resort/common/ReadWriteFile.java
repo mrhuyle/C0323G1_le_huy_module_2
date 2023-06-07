@@ -36,8 +36,10 @@ public class ReadWriteFile {
             FileWriter fileWriter = new FileWriter(path,append);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for(String str: stringlist) {
-                bufferedWriter.write(str);
-                bufferedWriter.newLine();
+                if (str != null ) {
+                    bufferedWriter.write(str);
+                    bufferedWriter.newLine();
+                }
             }
             bufferedWriter.close();
         } catch (IOException e) {
