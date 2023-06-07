@@ -31,7 +31,7 @@ public class FacilityController {
 
                         break;
                     case 4:
-
+                        facilityService.delete();
                         break;
                     case 5:
                         MainMenuController.displayMainMenu();
@@ -42,6 +42,7 @@ public class FacilityController {
                 e.printStackTrace();
             } catch (Exception e) {
                 System.err.println("System error");
+                e.printStackTrace();
             }
         } while (true);
     }

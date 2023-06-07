@@ -70,6 +70,22 @@ public class FacilityRepository implements IFacilityRepository {
     }
 
     @Override
+    public void delete(Facility facility) {
+        facilityLinkedHashMap = getAllWithUsages();
+        facilityLinkedHashMap.remove(facility);
+        List<String> stringList = new ArrayList<>();
+        Set<Facility> facilitySet = facilityLinkedHashMap.keySet();
+        for (Facility f: facilitySet) {
+            if (f != null) {
+                String str = "";
+                str = getInfo(f) + "," + facilityLinkedHashMap.get(f);
+                stringList.add(str);
+            }
+        }
+        ReadWriteFile.writeFile(FACILITY_PATH,stringList,false);
+    }
+
+    @Override
     public String getInfo(Facility facility) {
         String result = "";
         if (facility.getCode().contains("SVVL")) {

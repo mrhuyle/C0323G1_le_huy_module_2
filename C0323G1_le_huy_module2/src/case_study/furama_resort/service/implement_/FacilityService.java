@@ -201,6 +201,26 @@ public class FacilityService implements IFacilityService {
                 facilityRepository.add(newVilla);
             }
         }
+        System.out.println("You had successfully added the facility with the code" + code);
+    }
+
+    @Override
+    public void delete() {
+        System.out.println("Input facility code to delete: ");
+        String code;
+        do {
+            code = scanner.nextLine();
+            if (!Validate.validateFacilityCode(code)) {
+                System.err.println("Invalid facility code. The code must follow the rules: SVXX-YYYY (Villa: XX = VL, House: XX = HO, Room: XX= RO, and YYYY is the 4-digit number).Input again");
+                continue;
+            }
+            if (getFacilityByCode(code) == null) {
+                System.err.println("Do not find the facility with this code: ");
+                continue;
+            }
+            break;
+        } while (true);
+        facilityRepository.delete(getFacilityByCode(code));
     }
 
     @Override

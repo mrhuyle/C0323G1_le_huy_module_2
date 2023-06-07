@@ -8,4 +8,5 @@ public interface IFacilityService extends IService {
     }
     void add();
     Facility getFacilityByCode(String code);
+    void delete();
 }

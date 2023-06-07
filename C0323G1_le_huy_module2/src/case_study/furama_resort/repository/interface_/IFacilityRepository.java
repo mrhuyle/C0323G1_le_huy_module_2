@@ -10,6 +10,7 @@ public interface IFacilityRepository {
     LinkedHashMap<Facility,Integer> getAllWithUsages();
 
     void add(Facility facility);
+    void delete (Facility facility);
 
     String getInfo(Facility facility);
 }
