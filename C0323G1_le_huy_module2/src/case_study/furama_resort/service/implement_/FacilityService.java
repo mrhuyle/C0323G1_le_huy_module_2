@@ -220,6 +220,7 @@ public class FacilityService implements IFacilityService {
             }
             break;
         } while (true);
+        System.out.println("You had delete the facility with the code: " + code);
         facilityRepository.delete(getFacilityByCode(code));
     }
 

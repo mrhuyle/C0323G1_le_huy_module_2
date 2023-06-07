@@ -1,9 +1,13 @@
 package case_study.furama_resort.controller;
 
+import case_study.furama_resort.service.implement_.BookingService;
+import case_study.furama_resort.service.interface_.IBookingService;
+
 import java.util.Scanner;
 
 public class BookingController {
     private static final Scanner scanner = new Scanner(System.in);
+    private static IBookingService bookingService = new BookingService();
 
     public static void displayMenu() {
         do {
@@ -19,6 +23,7 @@ public class BookingController {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
+                        bookingService.add();
                         break;
                     case 2:
                         break;
@@ -29,7 +34,7 @@ public class BookingController {
                     case 5:
                         break;
                     case 6:
-                        break;
+                        MainMenuController.displayMainMenu();
                     default:
                         throw new NumberFormatException();
                 }

@@ -6,18 +6,18 @@ public class Booking {
     private String beginDateRent;
     private String endDateRent;
     private String customerCode;
-    private String serviceCode;
+    private String facilityCode;
 
     public Booking() {
     }
 
-    public Booking(String code, String dateBook, String beginDateRent, String endDateRent, String customerCode, String serviceCode) {
+    public Booking(String code, String dateBook, String beginDateRent, String endDateRent, String customerCode, String facilityCode) {
         this.code = code;
         this.dateBook = dateBook;
         this.beginDateRent = beginDateRent;
         this.endDateRent = endDateRent;
         this.customerCode = customerCode;
-        this.serviceCode = serviceCode;
+        this.facilityCode = facilityCode;
     }
 
     public String getCode() {
@@ -60,11 +60,11 @@ public class Booking {
         this.customerCode = customerCode;
     }
 
-    public String getServiceCode() {
-        return serviceCode;
+    public String getFacilityCode() {
+        return facilityCode;
     }
 
-    public void setServiceCode(String serviceCode) {
-        this.serviceCode = serviceCode;
+    public void setFacilityCode(String facilityCode) {
+        this.facilityCode = facilityCode;
     }
 }
