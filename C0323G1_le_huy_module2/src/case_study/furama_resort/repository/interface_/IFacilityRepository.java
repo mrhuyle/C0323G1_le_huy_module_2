@@ -8,4 +8,8 @@ import java.util.List;
 public interface IFacilityRepository {
 
     LinkedHashMap<Facility,Integer> getAllWithUsages();
+
+    void add(Facility facility);
+
+    String getInfo(Facility facility);
 }

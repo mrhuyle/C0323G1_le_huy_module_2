@@ -15,8 +15,9 @@ public class FacilityController {
                 System.out.println("*** Facility Management Menu ***\n" +
                         "1. Display list facility\n" +
                         "2. Add new facility \n" +
-                        "3. Edit facility\n" +
-                        "4. Return main menu");
+                        "3. Display list facility maintainance\n" +
+                        "4. Delete facility\n" +
+                        "5. Return main menu");
                 System.out.println("Input option: ");
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
@@ -29,11 +30,13 @@ public class FacilityController {
                     case 3:
                         break;
                     case 4:
+                        break;
+                    case 5:
                         MainMenuController.displayMainMenu();
                         break;
                 }
             } catch (NumberFormatException e) {
-                System.err.println("Error. Invalid option. Option must be 1-4");
+                System.err.println("Error. Invalid option. Option must be 1-5");
                 e.printStackTrace();
             } catch (Exception e) {
                 System.err.println("System error");

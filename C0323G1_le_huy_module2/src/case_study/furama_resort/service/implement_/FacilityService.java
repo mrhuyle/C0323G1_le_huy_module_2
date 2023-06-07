@@ -1,6 +1,9 @@
 package case_study.furama_resort.service.implement_;
 
 import case_study.furama_resort.model.Facility;
+import case_study.furama_resort.model.House;
+import case_study.furama_resort.model.Room;
+import case_study.furama_resort.model.Villa;
 import case_study.furama_resort.repository.implement_.FacilityRepository;
 import case_study.furama_resort.repository.interface_.IFacilityRepository;
 import case_study.furama_resort.service.interface_.IFacilityService;
@@ -90,7 +93,7 @@ public class FacilityService implements IFacilityService {
         } while (true);
 
         //Input rentalType:
-        String rentalType;
+        String rentalType = "";
         int optionRentalType;
         do {
             try {
@@ -120,9 +123,25 @@ public class FacilityService implements IFacilityService {
 
 
         //Classify VILLA / HOUSE / ROOM and input specific properties of them.
-        if (code.contains("SVVL") || code.contains("SVHO")) { //Classify VILLA/HOUSE
+        if (code.contains("SVRO")) { //Classify Room
+            //Input room freeService:
+            String freeService;
+            do {
+                System.out.println("Input free service of room: ");
+                freeService = scanner.nextLine();
+                if (freeService.length()<3 || freeService.trim().isEmpty()) {
+                    System.err.println("Invalid input (too short or empty). Input again.");
+                    continue;
+                }
+                break;
+            } while (true);
+            //Create new room:
+            Facility newRoom = new Room(code,name,area,fee,occupancy,rentalType,freeService);
+            facilityRepository.add(newRoom);
+
+        } else { //Classify VILLA/HOUSE
             //Input Villa/House standard:
-            String standard;
+            String standard ="";
             int optionStandard;
             do {
                 try {
@@ -150,6 +169,7 @@ public class FacilityService implements IFacilityService {
             //Input VILLA/HOUSE number of floors:
             int numberOfFloors;
             do {
+                System.out.println("Input number of floor: ");
                 numberOfFloors = Integer.parseInt(scanner.nextLine());
                 if (numberOfFloors < 0) {
                     System.err.println("Invalid number of floors. Must be integer and greater than 0.Input again.");
@@ -157,28 +177,26 @@ public class FacilityService implements IFacilityService {
                 }
                 break;
             } while (true);
-        } else if (code.contains("SVVL") && !code.contains("SVHO")) { //Classify Villa
-            //Input villa pool area:
-            float poolArea;
-            do  {
-                poolArea = Float.parseFloat(scanner.nextLine());
-                if (poolArea<30) {
-                    System.err.println("Invalid pool area. Must be greater than 30 m2. Input again.");
-                    continue;
-                }
-                break;
-            } while (true);
-        } else if (code.contains("SVRO")) { //Classify Room
-            //Input house freeService:
-            String freeService;
-            do {
-                freeService = scanner.nextLine();
-                if (freeService.length()<3 || freeService.trim().isEmpty()) {
-                    System.err.println("Invalid input (too short or empty). Input again.");
-                    continue;
-                }
-                break;
-            } while (true);
+
+            if (code.contains("SVHO")) { //Classify House
+                //Create new House:
+                Facility newHouse = new House(code,name,area,fee,occupancy,rentalType,standard,numberOfFloors);
+
+            } else { //Classify Villa
+                //Input villa pool area:
+                float poolArea;
+                do  {
+                    poolArea = Float.parseFloat(scanner.nextLine());
+                    if (poolArea<30) {
+                        System.err.println("Invalid pool area. Must be greater than 30 m2. Input again.");
+                        continue;
+                    }
+                    break;
+                } while (true);
+
+                //Create new Villa:
+                Facility newVilla = new Villa(code,name,area,fee,occupancy,rentalType,standard,poolArea,numberOfFloors);
+            }
         }
     }
 

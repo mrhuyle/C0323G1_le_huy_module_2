@@ -6,7 +6,7 @@ public abstract class Facility {
     private String code; //code of service
     private String name; // name of service
     private float area; //usage area
-    private float fee;
+    private int fee;
     private int occupancy; //maximum guest
     private String rentalType; //types of rent: yearly, monthly, daily, hourly
 
@@ -46,11 +46,11 @@ public abstract class Facility {
         this.area = area;
     }
 
-    public float getFee() {
+    public int getFee() {
         return fee;
     }
 
-    public void setFee(float fee) {
+    public void setFee(int fee) {
         this.fee = fee;
     }
 
