@@ -28,8 +28,10 @@ public class FacilityController {
                         facilityService.add();
                         break;
                     case 3:
+
                         break;
                     case 4:
+
                         break;
                     case 5:
                         MainMenuController.displayMainMenu();
@@ -38,37 +40,6 @@ public class FacilityController {
             } catch (NumberFormatException e) {
                 System.err.println("Error. Invalid option. Option must be 1-5");
                 e.printStackTrace();
-            } catch (Exception e) {
-                System.err.println("System error");
-            }
-        } while (true);
-    }
-
-    public static void displaySubMenu() {
-        do {
-            try {
-                System.out.println("*** Facility Sub Menu ****\n" +
-                        "1. Add New Villa\n" +
-                        "2. Add New House\n" +
-                        "3. Add New Room\n" +
-                        "4. Back to menu");
-                System.out.println("Input option: ");
-                int option = Integer.parseInt(scanner.nextLine());
-                switch (option) {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        displayMenu();
-                        break;
-                    default:
-                        throw new NumberFormatException();
-                }
-            } catch (NumberFormatException e) {
-                System.err.println("Error.Invalid option. Option must be 1 - 4");
             } catch (Exception e) {
                 System.err.println("System error");
             }

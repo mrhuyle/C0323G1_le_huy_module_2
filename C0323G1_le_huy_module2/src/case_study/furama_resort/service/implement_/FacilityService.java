@@ -181,11 +181,13 @@ public class FacilityService implements IFacilityService {
             if (code.contains("SVHO")) { //Classify House
                 //Create new House:
                 Facility newHouse = new House(code,name,area,fee,occupancy,rentalType,standard,numberOfFloors);
+                facilityRepository.add(newHouse);
 
             } else { //Classify Villa
                 //Input villa pool area:
                 float poolArea;
                 do  {
+                    System.out.println("Input villa pool area: ");
                     poolArea = Float.parseFloat(scanner.nextLine());
                     if (poolArea<30) {
                         System.err.println("Invalid pool area. Must be greater than 30 m2. Input again.");
@@ -196,6 +198,7 @@ public class FacilityService implements IFacilityService {
 
                 //Create new Villa:
                 Facility newVilla = new Villa(code,name,area,fee,occupancy,rentalType,standard,poolArea,numberOfFloors);
+                facilityRepository.add(newVilla);
             }
         }
     }
