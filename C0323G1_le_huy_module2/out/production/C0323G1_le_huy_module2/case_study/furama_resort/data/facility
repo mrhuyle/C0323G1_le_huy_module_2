@@ -1,5 +1,1 @@
-SVHO-1234,House,30.0,500,4,Monthly,Normal,20,0
-SVRO-1234,Room,35.0,500,2,Monthly,Sauna,0
-SVRO-0009,Room,30.0,500,2,Hourly,Dinner,0
-SVHO-1111,House new,80.0,1500,6,Monthly,Deluxe,3,0
-SVRO-7777,Room new new,40.0,900,2,Yearly,Breakfast,0
+SVRO-0001,Room1,30.0,700,3,Monthly,Sauna,1

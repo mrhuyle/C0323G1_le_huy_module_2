@@ -97,5 +97,26 @@ public class FacilityRepository implements IFacilityRepository {
         }
         return result;
     }
+
+    @Override
+    public void plusUsage(Facility facility) {
+        facilityLinkedHashMap = getAllWithUsages();
+        System.out.println(facilityLinkedHashMap.get(facility));
+        int plusUsage = facilityLinkedHashMap.get(facility) + 1; //Get the new value = old value + 1
+        facilityLinkedHashMap.replace(facility,plusUsage); //replace old value
+        System.out.println(facilityLinkedHashMap.get(facility));
+
+        //Write file (overwrite):
+        List<String> stringList = new ArrayList<>();
+        Set<Facility> facilitySet = facilityLinkedHashMap.keySet();
+        for (Facility f: facilitySet) {
+            if (f != null) {
+                String str = "";
+                str = getInfo(f) + "," + facilityLinkedHashMap.get(f);
+                stringList.add(str);
+            }
+        }
+        ReadWriteFile.writeFile(FACILITY_PATH,stringList,false);
+    }
 }
 

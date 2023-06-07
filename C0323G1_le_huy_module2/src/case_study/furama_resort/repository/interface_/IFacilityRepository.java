@@ -13,4 +13,6 @@ public interface IFacilityRepository {
     void delete (Facility facility);
 
     String getInfo(Facility facility);
+
+    void plusUsage(Facility facility);
 }

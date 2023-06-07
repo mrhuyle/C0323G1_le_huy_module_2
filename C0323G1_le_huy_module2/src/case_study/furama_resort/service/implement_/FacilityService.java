@@ -198,7 +198,7 @@ public class FacilityService implements IFacilityService {
                 facilityRepository.add(newVilla);
             }
         }
-        System.out.println("You had successfully added the facility with the code" + code);
+        System.out.println("You had successfully added the facility with the code: " + code);
     }
 
     @Override

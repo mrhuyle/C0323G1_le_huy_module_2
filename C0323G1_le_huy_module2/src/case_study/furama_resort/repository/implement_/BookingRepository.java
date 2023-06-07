@@ -5,6 +5,7 @@ import case_study.furama_resort.model.Booking;
 import case_study.furama_resort.model.Customer;
 import case_study.furama_resort.model.Facility;
 import case_study.furama_resort.repository.interface_.IBookingRepository;
+import case_study.furama_resort.repository.interface_.IFacilityRepository;
 import case_study.furama_resort.service.implement_.CustomerService;
 import case_study.furama_resort.service.implement_.FacilityService;
 import case_study.furama_resort.service.interface_.ICustomerService;
@@ -18,6 +19,7 @@ public class BookingRepository implements IBookingRepository {
     private static final String BOOKING_PATH = "src/case_study/furama_resort/data/booking";
     private static ICustomerService customerService = new CustomerService();
     private static IFacilityService facilityService = new FacilityService();
+    private static IFacilityRepository facilityRepository = new FacilityRepository();
     private static TreeSet<Booking> bookingTreeSet = new TreeSet<>(new BookingComparator());
 
     @Override
@@ -36,11 +38,15 @@ public class BookingRepository implements IBookingRepository {
 
     @Override
     public void add(Booking newBooking) {
+        //Add and write file:
         bookingTreeSet = getAll();
         bookingTreeSet.add(newBooking);
         List<String> stringList = new ArrayList<>();
         stringList.add(getInfo(newBooking));
         ReadWriteFile.writeFile(BOOKING_PATH, stringList, true);
+
+        //Plus 1 for facility:
+        facilityRepository.plusUsage(newBooking.getFacility());
     }
 
     @Override
