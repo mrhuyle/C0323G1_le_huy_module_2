@@ -19,8 +19,8 @@ public class Validate {
     public static final String EMAIL_REGEX = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
     public static final String CUSTOMER_CODE_REGEX = "^KH-\\d{4}$";
     public static final String FACILITY_CODE_REGEX = "^SV(VL|HO|RO)-\\d{4}$";
-
     public static final String FACILITY_NAME_REGEX = "^(([A-Z])|([A-Z][a-z1-9]*))(\\s([a-z1-9]+))*$";
+    public static final String BOOKING_CODE_REGEX = "^BO-\\d{4}$";
 
 
     public static boolean validateEmployeeCode(String code) {
@@ -93,6 +93,13 @@ public class Validate {
     public static boolean validateFacilityName(String name) {
         Pattern pattern = Pattern.compile(FACILITY_NAME_REGEX);
         Matcher matcher = pattern.matcher(name);
+        boolean result = matcher.matches();
+        return result;
+    }
+
+    public static boolean validateBookingCode(String code) {
+        Pattern pattern = Pattern.compile(BOOKING_CODE_REGEX);
+        Matcher matcher = pattern.matcher(code);
         boolean result = matcher.matches();
         return result;
     }
